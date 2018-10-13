@@ -1,0 +1,65 @@
+@media only screen and (max-width: 600px) {
+	body {
+		background-color: var(--primary);
+		overflow: hidden;
+		width: 100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	form {
+		display: block;
+		width: 80%;
+		font-family: "Gotham-Rounded";
+		margin: 3.8rem auto;
+		padding: 10px;
+		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 2.3);
+		background-color: var(--secondary);
+	}
+
+	.LoginForm input {
+		display: block;
+		margin: 1.6rem auto;
+		width: 90%;
+		height: 48px;
+		padding: 10px;
+		font-size: 1.3rem;
+	}
+
+	.UsernameLabel,
+	.PasswordLabel {
+		display: block;
+
+		margin: 1% 0 1% 0;
+		font-family: "Gotham-Rounded-Light";
+	}
+
+	#SignInBtn {
+		margin: 4rem auto;
+		font-family: "Gotham-Rounded";
+	}
+
+	#SignInBtn:hover {
+		margin: 4rem auto;
+		font-family: "Gotham-Rounded";
+		color: var(--primary);
+	}
+
+	.DontHaveAccountLink {
+		text-decoration: none;
+		color: var(--primary);
+	}
+
+	.DontHaveAccountLink:hover {
+		text-decoration: none;
+		color: var(--primary);
+	}
+
+	.SwappuyoLoginTitle {
+		margin-top: 5rem;
+		text-align: center;
+		color: var(--secondary);
+		font-family: "Gotham-Rounded-Light";
+	}
+}

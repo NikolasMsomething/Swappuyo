@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../components/Header";
 
-const Home = () => (
+const TradeHub = () => (
 	<React.Fragment>
 		<Header />
 		<div>
-			<h1>Home Page</h1>
+			<h1>Trade Hub</h1>
 		</div>
 	</React.Fragment>
 );
 
-export default Home;
+export default TradeHub;
