@@ -5,6 +5,14 @@
 	--secondary: #ecc30b;
 }
 
+body {
+	background-color: var(--primary);
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 @font-face {
 	font-family: "Gotham-Rounded";
 	src: url("./components/styles/fonts/GothamRoundedMedium_21022.ttf");

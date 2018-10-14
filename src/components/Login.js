@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Login = () => {
 	return (
-		<React.Fragment>
+		<div className="MasterFormContainer">
 			<h1 className="SwappuyoLoginTitle">Swappuyo</h1>
 			<form className="LoginForm">
 				<label className="UsernameLabel" htmlFor="username">
@@ -29,7 +29,7 @@ const Login = () => {
 					Don't have an account?
 				</NavLink>
 			</form>
-		</React.Fragment>
+		</div>
 	);
 };
 

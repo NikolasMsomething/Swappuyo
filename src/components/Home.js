@@ -1,13 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Header from "../components/Header";
+import { getFromRedditApi } from "../actions";
+import TradeDetails from "./TradeDetails";
 
-const Home = () => (
-	<React.Fragment>
-		<Header />
-		<div>
-			<h1>Home Page</h1>
-		</div>
-	</React.Fragment>
-);
+class Home extends Component {
+	componentDidMount() {
+		this.props.dispatch(getFromRedditApi());
+	}
 
-export default Home;
+	render() {
+		return (
+			<React.Fragment>
+				<Header />
+				<div>
+					<h1>Home Page</h1>
+					<ul>
+						<TradeDetails />
+					</ul>
+				</div>
+			</React.Fragment>
+		);
+	}
+}
+
+function mapStateToProps(state) {
+	console.log(state);
+	return {
+		items: state.itemsReducer.items
+	};
+}
+
+export default connect(mapStateToProps)(Home);
