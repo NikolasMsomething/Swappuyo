@@ -3,7 +3,7 @@
 		overflow: hidden;
 	}
 
-	form {
+	.RegisterForm {
 		display: block;
 		width: 80%;
 		font-family: "Gotham-Rounded";
@@ -13,11 +13,11 @@
 		background-color: var(--secondary);
 	}
 
-	.LoginForm input {
+	.RegisterForm input {
 		display: block;
-		margin: 1.4rem auto;
+		margin: 0.8rem auto;
 		width: 90%;
-		height: 48px;
+		height: 45px;
 		padding: 10px;
 		font-size: 1.3rem;
 	}
@@ -32,7 +32,6 @@
 		font-family: "Gotham-Rounded-Light";
 	}
 
-	#SignInBtn,
 	#SignUpBtn {
 		margin: 4rem auto;
 		border: 1px solid (--primary);
@@ -42,7 +41,7 @@
 		border-style: none;
 	}
 
-	#SignInBtn:hover {
+	#SignUpBtn:hover {
 		font-family: "Gotham-Rounded";
 		font-size: 1.38rem;
 	}
@@ -70,7 +69,7 @@
 		overflow: hidden;
 	}
 
-	.LoginForm {
+	.RegisterForm {
 		display: block;
 		width: 29%;
 		font-family: "Gotham-Rounded";

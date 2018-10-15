@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
-import { getFromRedditApi } from "../actions";
+import { getFromRedditHardwareSwap } from "../actions";
 import TradeDetails from "./TradeDetails";
 
 class Home extends Component {
 	componentDidMount() {
-		this.props.dispatch(getFromRedditApi());
+		this.props.dispatch(getFromRedditHardwareSwap());
 	}
 
 	render() {

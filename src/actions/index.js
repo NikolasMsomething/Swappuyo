@@ -5,6 +5,54 @@ const register = value => {
 	};
 };
 
+// REGISTER ACTIONS PAGE
+export const postToSwapuyoRegisterSyncAction = value => {
+	return {
+		type: "REGISTER_USER",
+		value
+	};
+};
+
+export const postToSwapuyoRegisterAction = (
+	name,
+	email,
+	username,
+	password
+) => dispatch => {
+	return fetch("http://localhost:8080/api/user", {
+		method: "POST", // or 'PUT',
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			name: name,
+			email: email,
+			username: username,
+			password: password
+		}) // body data type must match "Content-Type" header
+	})
+		.then(res => {
+			return res.json();
+		})
+		.then(response => {
+			console.log(response);
+			if (!response.error) {
+				return dispatch(postToSwapuyoRegisterSyncAction());
+			}
+			if (response.error) {
+				alert("There was a validation error! Check your fields!");
+			}
+		})
+		.catch(err => alert(err));
+};
+
+// REGISTER ACTIONS PAGE
+
+// LOGIN ACTIONS PAGE
+
+// TRADE DETAILS ACTIONS HOME PAGE
+
 export const handleTradeExpandAction = value => {
 	return {
 		type: "HANDLE_TRADE_EXPAND",
@@ -19,7 +67,7 @@ export const hardWareSwapItemToStore = value => {
 	};
 };
 
-export const getFromRedditApi = () => dispatch => {
+export const getFromRedditHardwareSwap = () => dispatch => {
 	return fetch("https://www.reddit.com/r/hardwareswap.json")
 		.then(results => results.json())
 		.then(results => {
@@ -42,3 +90,5 @@ export const getFromRedditApi = () => dispatch => {
 			dispatch(hardWareSwapItemToStore(arr));
 		});
 };
+
+// TRADE DETAILS ACTIONS HOME PAGE

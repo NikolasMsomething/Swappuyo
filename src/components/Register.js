@@ -1,15 +1,43 @@
 import React from "react";
-import "./styles/Login.css";
+import "./styles/Register.css";
+import { postToSwapuyoRegisterAction } from "../actions";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
-const Register = () => {
+const Register = props => {
 	return (
 		<React.Fragment>
 			<h1 className="SwappuyoLoginTitle">Swappuyo</h1>
-			<form className="LoginForm">
-				<label className="FullName" for="username">
+			<form
+				className="RegisterForm"
+				onSubmit={e => {
+					e.preventDefault();
+					let name = e.target.name.value;
+					let email = e.target.email.value;
+					let username = e.target.username.value;
+					let password = e.target.password.value;
+
+					return Promise.all([
+						props.dispatch(
+							postToSwapuyoRegisterAction(name, email, username, password)
+						)
+					]).then(() => {
+						if (props.didRegister) {
+							props.history.push({
+								pathname: "/login"
+							});
+						}
+					});
+				}}
+			>
+				<label className="NameLabel" for="username">
 					Full Name:
 				</label>
-				<input type="text" name="FullName" />
+				<input type="text" name="name" />
+				<label className="EmailLabel" for="email">
+					Email:
+				</label>
+				<input type="text" name="email" />
 				<label className="UsernameLabel" for="username">
 					Username:
 				</label>
@@ -29,4 +57,11 @@ const Register = () => {
 	);
 };
 
-export default Register;
+function mapStateToProps(state) {
+	console.log(state);
+	return {
+		didRegister: state.registerReducer.didRegister
+	};
+}
+
+export default connect(mapStateToProps)(Register);
