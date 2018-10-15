@@ -1,3 +1,5 @@
+import { normalizeResponseErrors } from "./utils";
+
 const register = value => {
 	return {
 		type: "REGISTER_USER",
@@ -6,9 +8,18 @@ const register = value => {
 };
 
 // REGISTER ACTIONS PAGE
-export const postToSwapuyoRegisterSyncAction = value => {
+export const postToSwapuyoRegisterSuccess = value => {
 	return {
 		type: "REGISTER_USER",
+		value
+	};
+};
+
+export const postToSwapuyoRegisterRequest = value => {};
+
+export const postToSwapuyoRegisterError = value => {
+	return {
+		type: "REGISTER_ERROR",
 		value
 	};
 };
@@ -32,24 +43,71 @@ export const postToSwapuyoRegisterAction = (
 			password: password
 		}) // body data type must match "Content-Type" header
 	})
+		.then(res => normalizeResponseErrors(res))
 		.then(res => {
 			return res.json();
 		})
-		.then(response => {
-			console.log(response);
-			if (!response.error) {
-				return dispatch(postToSwapuyoRegisterSyncAction());
-			}
-			if (response.error) {
-				alert("There was a validation error! Check your fields!");
-			}
+
+		.then(() => {
+			return dispatch(postToSwapuyoRegisterSuccess());
 		})
-		.catch(err => alert(err));
+		.catch(error => {
+			console.log(error);
+			let err = error.message || error.error.details[0].message;
+			// if (error.message) {
+			// 	console.error(error.message);
+			// }
+			// if (error.error) {
+			// 	alert(error.error);
+			// }
+			alert(err);
+		});
 };
 
 // REGISTER ACTIONS PAGE
 
 // LOGIN ACTIONS PAGE
+export const postToSwapuyoLoginSuccess = () => {};
+
+export const postToSwapuyoLoginAction = (username, password) => dispatch => {
+	return fetch("http://localhost:8080/api/login", {
+		method: "POST", // or 'PUT',
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password
+		}) // body data type must match "Content-Type" header
+	})
+		.then(res => normalizeResponseErrors(res))
+		.then(res => {
+			return res.json();
+		})
+		.then(res => {
+			console.log(res);
+		})
+		.catch(error => {
+			console.log(error);
+			let err = error.message || error.error.details[0].message;
+			// if (error.message) {
+			// 	console.error(error.message);
+			// }
+			// if (error.error) {
+			// 	alert(error.error);
+			// }
+			alert(err);
+		});
+};
+
+//LOGIN ACTIONS PAGE
+export const loginPageRegisterReset = value => {
+	return {
+		type: "LOGIN_PAGE_RESET",
+		value
+	};
+};
 
 // TRADE DETAILS ACTIONS HOME PAGE
 

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Header from "../components/Header";
 import { getFromRedditHardwareSwap } from "../actions";
 import TradeDetails from "./TradeDetails";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
 	componentDidMount() {
@@ -10,6 +11,9 @@ class Home extends Component {
 	}
 
 	render() {
+		if (!this.props.loggedIn) {
+			return <Redirect to="/login" />;
+		}
 		return (
 			<React.Fragment>
 				<Header />
@@ -27,7 +31,8 @@ class Home extends Component {
 function mapStateToProps(state) {
 	console.log(state);
 	return {
-		items: state.itemsReducer.items
+		items: state.itemsReducer.items,
+		loggedIn: state.loginReducer.loggedIn
 	};
 }
 
