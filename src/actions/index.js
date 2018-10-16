@@ -67,7 +67,12 @@ export const postToSwapuyoRegisterAction = (
 // REGISTER ACTIONS PAGE
 
 // LOGIN ACTIONS PAGE
-export const postToSwapuyoLoginSuccess = () => {};
+export const postToSwapuyoLoginSuccess = value => {
+	return {
+		type: "HANDLE_TOKEN",
+		value
+	};
+};
 
 export const postToSwapuyoLoginAction = (username, password) => dispatch => {
 	return fetch("http://localhost:8080/api/login", {
@@ -86,7 +91,7 @@ export const postToSwapuyoLoginAction = (username, password) => dispatch => {
 			return res.json();
 		})
 		.then(res => {
-			console.log(res);
+			dispatch(postToSwapuyoLoginSuccess(res));
 		})
 		.catch(error => {
 			console.log(error);
@@ -126,20 +131,20 @@ export const hardWareSwapItemToStore = value => {
 };
 
 export const getFromRedditHardwareSwap = () => dispatch => {
-	return fetch("https://www.reddit.com/r/hardwareswap.json")
+	return fetch("http://localhost:8080/api/hardwareswap")
 		.then(results => results.json())
 		.then(results => {
-			let twentyFiveResults = results.data.children;
+			let twentyFiveResults = results;
 			console.log(twentyFiveResults);
 			let arr = [];
 			twentyFiveResults.forEach((item, index) => {
 				if (index !== 1 && index !== 0) {
 					arr.push({
-						itemId: item.data.id,
-						itemUrl: item.data.url,
-						itemTitle: item.data.title,
-						itemAuthor: item.data.author,
-						content: item.data.selftext,
+						itemId: item.id,
+						itemUrl: item.url,
+						itemTitle: item.title,
+						itemAuthor: item.author,
+						content: item.selftext,
 						expanded: false
 					});
 				}
@@ -150,3 +155,7 @@ export const getFromRedditHardwareSwap = () => dispatch => {
 };
 
 // TRADE DETAILS ACTIONS HOME PAGE
+
+//WANTLIST PAGE
+
+//WANTLIST PAGE

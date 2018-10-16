@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles/Login.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { postToSwapuyoLoginAction } from "../actions";
 import { connect } from "react-redux";
 import {
@@ -23,6 +23,9 @@ class Login extends Component {
 	}
 
 	render() {
+		if (this.props.loggedIn) {
+			return <Redirect to="/home" />;
+		}
 		return (
 			<div className="MasterFormContainer">
 				<h1 className="SwappuyoLoginTitle">Swappuyo</h1>
@@ -70,7 +73,9 @@ class Login extends Component {
 function mapStateToProps(state) {
 	console.log(state);
 	return {
-		didRegister: state.registerReducer.didRegister
+		didRegister: state.registerReducer.didRegister,
+		loggedIn: state.loginReducer.loggedIn,
+		authToken: state.loginReducer.authToken
 	};
 }
 
