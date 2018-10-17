@@ -190,40 +190,40 @@ export const getFromRedditHardwareSwap = () => dispatch => {
 export const GetRefreshTokenFromReddit = code => dispatch => {
 	const client_id = "jMNgm9tZ6e0Kig";
 	const client_secret = "qVBQ3qeJfe6NzYCMwY8aDh2oCoI";
+	const obj = {
+		code: code,
+		grant_type: "authorization_code",
+		redirect_uri: "http://localhost:3000/RedditTokenRedirect"
+	};
+	const body = `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/RedditTokenRedirect`;
 
-	var form = new FormData();
-	form.append("code", code);
-	form.append("grant_type", "authorization_code");
-	form.append(
-		"redirect_uri",
-		"https://localhost.com/3000/RedditTokenRedirect/"
-	);
+	return fetch("https://www.reddit.com/api/v1/access_token", {
+		// Authorization: "jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI",
+		method: "POST", // or 'PUT',
+		mode: "no-cors",
+		headers: {
+			Authorization:
+				"Basic" + btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"),
+			"Content-Type": "application/x-www-form-urlencoded"
+			// "Content-Type": "application/x-www-form-urlencoded",
+		},
+		// headers: { "Content-Type": "application/x-www-form-urlencoded" },
 
-	return (
-		fetch("https://www.reddit.com/api/v1/access_token", {
-			// Authorization: "jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI",
-			method: "POST", // or 'PUT',
-			mode: "no-cors",
-			headers: {
-				Authorization:
-					"Basic" + btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"),
-				"Content-Type": "application/x-www-form-urlencoded"
-				// "Content-Type": "application/x-www-form-urlencoded",
-			},
-			// headers: { "Content-Type": "application/x-www-form-urlencoded" },
-
-			// client_id: "jMNgm9tZ6e0Kig",
-			// client_secret: "qVBQ3qeJfe6NzYCMwY8aDh2oCoI",
-			body: form
+		// client_id: "jMNgm9tZ6e0Kig",
+		// client_secret: "qVBQ3qeJfe6NzYCMwY8aDh2oCoI",
+		body
+	})
+		.then(res => normalizeResponseErrors(res))
+		.then(res => {
+			console.log(res);
+			let gabe = JSON.stringify(res);
+			console.log(gabe);
+			return res.json();
 		})
-			.then(res => normalizeResponseErrors(res))
-			// .then(res => res.json())
-			.then(res => {
-				console.log(res);
-			})
-			.then(res => console.log(res))
-			.catch(err => console.log(err))
-	);
+		.then(response => {
+			console.log(response);
+		})
+		.catch(err => console.log(err));
 };
 //RedditTokenRedirectActions
 
