@@ -7,6 +7,7 @@ import WantList from "../components/WantList";
 import Contact from "../components/Contact";
 import NotFound from "../components/NotFound";
 import Register from "../components/Register";
+import RedditTokenRedirectPage from "../components/RedditTokenRedirectPage";
 
 const AppRouter = () => (
 	<BrowserRouter>
@@ -18,7 +19,12 @@ const AppRouter = () => (
 				<Route path="/trade-hub" component={TradeHub} exact={true} />
 				<Route path="/want-list" component={WantList} exact={true} />
 				<Route path="/contact" component={Contact} exact={true} />
-				<Route component={NotFound} />
+				{/* <Route component={NotFound} /> */}
+				<Route
+					path="/RedditTokenRedirect"
+					component={RedditTokenRedirectPage}
+					exact={true}
+				/>
 			</Switch>
 		</React.Fragment>
 	</BrowserRouter>

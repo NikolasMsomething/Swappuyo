@@ -23,7 +23,7 @@ class Login extends Component {
 	}
 
 	render() {
-		if (this.props.loggedIn) {
+		if (this.props.authToken) {
 			return <Redirect to="/home" />;
 		}
 		return (
@@ -74,7 +74,6 @@ function mapStateToProps(state) {
 	console.log(state);
 	return {
 		didRegister: state.registerReducer.didRegister,
-		loggedIn: state.loginReducer.loggedIn,
 		authToken: state.loginReducer.authToken
 	};
 }
