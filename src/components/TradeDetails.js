@@ -14,14 +14,27 @@ const TradeDetails = props => {
 					return (
 						<React.Fragment>
 							<li
-								onClick={() =>
-									props.dispatch(handleTradeExpandAction(item.itemId))
-								}
+								onClick={e => {
+									props.dispatch(handleTradeExpandAction(item.itemId));
+								}}
 							>
 								{item.itemTitle}
 								<br />
 								<p>{item.content}</p>
 							</li>
+							<button
+								onClick={e =>
+									console.log(
+										item.content,
+										item.Title,
+										item.Author,
+										item.itemUrl,
+										item.itemId
+									)
+								}
+							>
+								CLICK HERE
+							</button>
 						</React.Fragment>
 					);
 				}

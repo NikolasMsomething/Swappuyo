@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const WantList = props => {
-	if (!props.loggedIn) {
+	if (!props.refreshToken) {
 		return <Redirect to="/" />;
 	}
 
@@ -22,7 +22,8 @@ function mapStateToProps(state) {
 	console.log(state);
 	return {
 		items: state.itemsReducer.items,
-		loggedIn: state.loginReducer.loggedIn
+		authToken: state.loginReducer.authToken,
+		refreshToken: state.loginReducer.refreshToken
 	};
 }
 

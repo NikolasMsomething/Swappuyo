@@ -2,14 +2,18 @@ import {
 	SET_AUTH_TOKEN,
 	AUTH_SUCCESS,
 	AUTH_ERROR,
-	CLEAR_AUTH
+	CLEAR_AUTH,
+	STORE_REDDIT_TOKENS
 } from "../actions";
 
 const initialState = {
 	authToken: undefined,
 	user: undefined,
 	loading: false,
-	error: null
+	error: null,
+	redditTokenType: undefined,
+	accessToken: undefined,
+	refreshToken: undefined
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -41,6 +45,13 @@ export const loginReducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				authToken: null,
 				currentUser: null
+			});
+		}
+		case STORE_REDDIT_TOKENS: {
+			return Object.assign({}, state, {
+				redditTokenType: action.value.token_type,
+				accessToken: action.value.access_token,
+				refreshToken: action.value.refresh_token
 			});
 		}
 		default:

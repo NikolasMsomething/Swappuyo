@@ -1,6 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
 import { saveAuthToken, loadAuthToken, clearAuthToken } from "../local-storage";
 import jwtDecode from "jwt-decode";
+import { API_BASE_URL } from "../config";
 
 const register = value => {
 	return {
@@ -32,7 +33,7 @@ export const postToSwapuyoRegisterAction = (
 	username,
 	password
 ) => dispatch => {
-	return fetch("http://localhost:8080/api/user", {
+	return fetch(`${API_BASE_URL}/user`, {
 		method: "POST", // or 'PUT',
 		mode: "cors",
 		headers: {
@@ -105,7 +106,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const postToSwapuyoLoginAction = (username, password) => dispatch => {
-	return fetch("http://localhost:8080/api/login", {
+	return fetch(`${API_BASE_URL}/login`, {
 		method: "POST", // or 'PUT',
 		mode: "cors",
 		headers: {
@@ -162,68 +163,98 @@ export const hardWareSwapItemToStore = value => {
 	};
 };
 
-export const getFromRedditHardwareSwap = () => dispatch => {
-	return fetch("http://localhost:8080/api/hardwareswap")
+//CALL TO OUR API WHICH CALLS TO REDDIT API USING OUR REFRESH TOKEN!! CRUCIAL STRUCTURE
+export const getFromRedditHardwareSwap = refreshToken => dispatch => {
+	console.log(refreshToken);
+	return fetch(`${API_BASE_URL}/hardwareswap?refreshToken=${refreshToken}`)
+		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
 			console.log(results);
 			let twentyFiveResults = results;
-			// let arr = [];
-			// twentyFiveResults.forEach((item, index) => {
-			// 	if (index !== 1 && index !== 0) {
-			// 		arr.push({
-			// 			itemId: item.id,
-			// 			itemUrl: item.url,
-			// 			itemTitle: item.title,
-			// 			itemAuthor: item.author,
-			// 			content: item.selftext,
-			// 			expanded: false
-			// 		});
-			// 	}
-			// });
-			// console.log(arr);
-			// dispatch(hardWareSwapItemToStore(arr));
+			let arr = [];
+			twentyFiveResults.forEach((item, index) => {
+				if (index !== 1 && index !== 0) {
+					arr.push({
+						itemId: item.id,
+						itemUrl: item.url,
+						itemTitle: item.title,
+						itemAuthor: item.author,
+						content: item.selftext,
+						expanded: false
+					});
+				}
+			});
+			console.log(arr);
+			dispatch(hardWareSwapItemToStore(arr));
+		})
+		.catch(err => {
+			console.log(err);
 		});
 };
 
 //RedditTokenRedirectActions
-export const GetRefreshTokenFromReddit = code => dispatch => {
-	const client_id = "jMNgm9tZ6e0Kig";
-	const client_secret = "qVBQ3qeJfe6NzYCMwY8aDh2oCoI";
-	const obj = {
-		code: code,
-		grant_type: "authorization_code",
-		redirect_uri: "http://localhost:3000/RedditTokenRedirect"
+
+// export const GetRefreshTokenFromReddit = code => dispatch => {
+// 	const client_id = "jMNgm9tZ6e0Kig";
+// 	const client_secret = "qVBQ3qeJfe6NzYCMwY8aDh2oCoI";
+// 	console.log(btoa(`${client_id}:${client_secret}`));
+// 	// const body = `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/RedditTokenRedirect`;
+
+// 	return fetch("https://www.reddit.com/api/v1/access_token", {
+// 		method: "POST", // or 'PUT',
+// 		mode: "no-cors",
+// 		headers: {
+// 			Authorization: "Basic " + btoa(`${client_id}:${client_secret}`),
+// 			"Content-Type": "application/x-www-form-urlencoded"
+// 		},
+// 		body: `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/RedditTokenRedirect`
+// 	})
+// 		.then(res => normalizeResponseErrors(res))
+// 		.then(res => {
+// 			console.log(res);
+// 			let gabe = res.json();
+// 			console.log(gabe);
+// 			return res.json();
+// 		})
+// 		.then(response => {
+// 			console.log(response);
+// 		})
+// 		.catch(err => console.log(err));
+// };
+
+export const STORE_REDDIT_TOKENS = "STORE_REDDIT_TOKENS";
+export const storeRedditTokens = value => {
+	return {
+		type: STORE_REDDIT_TOKENS,
+		value
 	};
-	const body = `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/RedditTokenRedirect`;
+};
 
-	return fetch("https://www.reddit.com/api/v1/access_token", {
-		// Authorization: "jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI",
-		method: "POST", // or 'PUT',
-		mode: "no-cors",
+export const giveCodeToSwappuyoApi = code => dispatch => {
+	console.log(btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"));
+
+	console.log(code);
+	return fetch("http://localhost:8080/api/code", {
+		method: "POST",
+		mode: "cors",
 		headers: {
-			Authorization:
-				"Basic" + btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"),
-			"Content-Type": "application/x-www-form-urlencoded"
-			// "Content-Type": "application/x-www-form-urlencoded",
+			"Content-Type": "application/json"
 		},
-		// headers: { "Content-Type": "application/x-www-form-urlencoded" },
-
-		// client_id: "jMNgm9tZ6e0Kig",
-		// client_secret: "qVBQ3qeJfe6NzYCMwY8aDh2oCoI",
-		body
+		body: JSON.stringify({
+			code
+		})
 	})
-		.then(res => normalizeResponseErrors(res))
 		.then(res => {
-			console.log(res);
-			let gabe = JSON.stringify(res);
-			console.log(gabe);
 			return res.json();
 		})
-		.then(response => {
-			console.log(response);
+		.then(data => {
+			console.log(data);
+			dispatch(storeRedditTokens(data));
 		})
-		.catch(err => console.log(err));
+		.catch(err => {
+			console.log(err);
+		});
 };
 //RedditTokenRedirectActions
 

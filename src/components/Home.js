@@ -8,12 +8,15 @@ import { Redirect, Route, Link } from "react-router-dom";
 
 class Home extends Component {
 	componentDidMount() {
-		this.props.dispatch(getFromRedditHardwareSwap());
-		saveAuthToken()
+		if (this.props.refreshToken) {
+			let refreshToken = this.props.refreshToken;
+			this.props.dispatch(getFromRedditHardwareSwap(refreshToken));
+			saveAuthToken(this.props.authToken);
+		}
 	}
 
 	render() {
-		if (!this.props.redditAuthorized && this.props.authToken) {
+		if (this.props.refreshToken === undefined && this.props.authToken) {
 			return (
 				<div>
 					<a href="https://www.reddit.com/api/v1/authorize?client_id=jMNgm9tZ6e0Kig&response_type=code&state=SwappuyoReddit&redirect_uri=http://localhost:3000/RedditTokenRedirect&duration=permanent&scope=privatemessages,read,submit,save,subscribe,edit">
@@ -44,7 +47,7 @@ function mapStateToProps(state) {
 	return {
 		items: state.itemsReducer.items,
 		authToken: state.loginReducer.authToken,
-		redditAuthorized: state.itemsReducer.redditAuthorized
+		refreshToken: state.loginReducer.refreshToken
 	};
 }
 
