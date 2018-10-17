@@ -180,6 +180,35 @@ export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 						itemUrl: item.url,
 						itemTitle: item.title,
 						itemAuthor: item.author,
+						content: item.selftext_html,
+						expanded: false
+					});
+				}
+			});
+			console.log(arr);
+			dispatch(hardWareSwapItemToStore(arr));
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
+
+export const getFromRedditHardwareSwapMarkdown = refreshToken => dispatch => {
+	console.log(refreshToken);
+	return fetch(`${API_BASE_URL}/hardwareswap?refreshToken=${refreshToken}`)
+		.then(res => normalizeResponseErrors(res))
+		.then(results => results.json())
+		.then(results => {
+			console.log(results);
+			let twentyFiveResults = results;
+			let arr = [];
+			twentyFiveResults.forEach((item, index) => {
+				if (index !== 1 && index !== 0) {
+					arr.push({
+						itemId: item.id,
+						itemUrl: item.url,
+						itemTitle: item.title,
+						itemAuthor: item.author,
 						content: item.selftext,
 						expanded: false
 					});

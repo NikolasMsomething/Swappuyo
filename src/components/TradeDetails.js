@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { handleTradeExpandAction } from "../actions/index";
+import Markdown from "markdown-to-jsx";
+import { render } from "react-dom";
 
 const handleExpandClick = (props, item) => {
 	props.dispatch(handleTradeExpandAction(item.itemId));
@@ -14,26 +16,27 @@ const TradeDetails = props => {
 					return (
 						<React.Fragment>
 							<li
+								key={item.itemId}
 								onClick={e => {
 									props.dispatch(handleTradeExpandAction(item.itemId));
 								}}
 							>
 								{item.itemTitle}
 								<br />
-								<p>{item.content}</p>
+								<Markdown>{item.content}</Markdown>
 							</li>
 							<button
 								onClick={e =>
 									console.log(
 										item.content,
-										item.Title,
-										item.Author,
+										item.itemTitle,
+										item.itemAuthor,
 										item.itemUrl,
 										item.itemId
 									)
 								}
 							>
-								CLICK HERE
+								SAVE
 							</button>
 						</React.Fragment>
 					);
@@ -42,7 +45,7 @@ const TradeDetails = props => {
 				return (
 					<React.Fragment>
 						<li
-							id={item.itemId}
+							key={item.itemId}
 							onClick={() => {
 								props.dispatch(handleTradeExpandAction(item.itemId));
 								console.log(typeof item.itemId);
