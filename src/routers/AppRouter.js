@@ -5,7 +5,6 @@ import Login from "../components/Login";
 import TradeHub from "../components/TradeHub";
 import WantList from "../components/WantList";
 import Contact from "../components/Contact";
-import NotFound from "../components/NotFound";
 import Register from "../components/Register";
 import RedditTokenRedirectPage from "../components/RedditTokenRedirectPage";
 
@@ -25,6 +24,7 @@ const AppRouter = () => (
 					component={RedditTokenRedirectPage}
 					exact={true}
 				/>
+				<Route path="/" component={Login} />
 			</Switch>
 		</React.Fragment>
 	</BrowserRouter>

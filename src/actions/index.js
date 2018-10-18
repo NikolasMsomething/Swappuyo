@@ -1,14 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
-import { saveAuthToken, loadAuthToken, clearAuthToken } from "../local-storage";
+import { saveAuthToken, saveRefreshToken } from "../local-storage";
 import jwtDecode from "jwt-decode";
 import { API_BASE_URL } from "../config";
-
-const register = value => {
-	return {
-		type: "REGISTER_USER",
-		value
-	};
-};
 
 // REGISTER ACTIONS PAGE
 export const postToSwapuyoRegisterSuccess = value => {
@@ -280,16 +273,17 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 		.then(data => {
 			console.log(data);
 			dispatch(storeRedditTokens(data));
+			saveRefreshToken(data.refresh_token);
 		})
 		.catch(err => {
 			console.log(err);
 		});
 };
 export const STORE_REFRESH_TOKEN = "STORE_REFRESH_TOKEN";
-export const storeRefreshToken = val => {
+export const storeRefreshToken = value => {
 	return {
 		type: STORE_REFRESH_TOKEN,
-		val
+		value
 	};
 };
 // export const postWantTradeToReduxStore = (val) => {
@@ -338,10 +332,10 @@ export const postWantTradeToSwappuyoApi = (
 			console.log(err);
 		});
 };
-
-export const getWantTradeToSwappuyoApiSuccess = value => {
+export const GET_TRADE_SUCCESS = "GET_TRADE_SUCCESS";
+export const getWantTradeFromSwappuyoApiSuccess = value => {
 	return {
-		type: "GET_TRADE_SUCCESS",
+		type: GET_TRADE_SUCCESS,
 		value
 	};
 };
@@ -359,7 +353,7 @@ export const getWantTradeFromSwappuyoApi = authToken => dispatch => {
 			return res.json();
 		})
 		.then(data => {
-			console.log(data);
+			dispatch(getWantTradeFromSwappuyoApiSuccess(data));
 		})
 		.catch(err => {
 			console.log(err);

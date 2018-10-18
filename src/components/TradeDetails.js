@@ -4,12 +4,6 @@ import {
 	handleTradeExpandAction,
 	postWantTradeToSwappuyoApi
 } from "../actions/index";
-import Markdown from "markdown-to-jsx";
-import { render } from "react-dom";
-
-const handleExpandClick = (props, item) => {
-	props.dispatch(handleTradeExpandAction(item.itemId));
-};
 
 const TradeDetails = props => {
 	return (

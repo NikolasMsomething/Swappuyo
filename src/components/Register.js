@@ -1,12 +1,9 @@
 import React from "react";
 import "./styles/Register.css";
-import {
-	postToSwapuyoRegisterAction,
-	postToSwapuyoRegisterSuccess
-} from "../actions";
+import { postToSwapuyoRegisterAction } from "../actions";
 
 import { connect } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Register = props => {
 	if (props.didRegister) {

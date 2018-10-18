@@ -1,24 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
-import { getFromRedditHardwareSwap, storeAuthInfo } from "../actions";
-import {
-	loadAuthToken,
-	saveAuthToken,
-	clearAuthToken,
-	loadRefreshToken,
-	saveRefreshToken,
-	clearRefreshToken
-} from "../local-storage";
+import { getFromRedditHardwareSwap } from "../actions";
+
 import TradeDetails from "./TradeDetails";
-import { Redirect, Route, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
+	//WARNING! To be deprecated in React v17. Use componentDidMount instead.
+
 	componentDidMount() {
 		if (this.props.refreshToken) {
 			let refreshToken = this.props.refreshToken;
 			this.props.dispatch(getFromRedditHardwareSwap(refreshToken));
-			saveAuthToken(this.props.authToken);
 		}
 	}
 

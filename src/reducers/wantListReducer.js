@@ -1,3 +1,5 @@
+import { GET_TRADE_SUCCESS } from "../actions";
+
 const initialState = {
 	wantListItems: [],
 	loading: false
@@ -5,21 +7,10 @@ const initialState = {
 
 export const wantListReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "HS_TO_STORE": {
+		case GET_TRADE_SUCCESS: {
+			console.log(action.value);
 			return Object.assign({}, state, {
-				items: [...action.value]
-			});
-		}
-		case "GET_TRADE_SUCCESS": {
-			return Object.assign({}, state, {
-				// wantListItems: state.items.map(item => {
-				// 	if (item.itemId === action.value) {
-				// 		item.expanded = !item.expanded;
-				// 		console.log("hello");
-				// 		return item;
-				// 	}
-				// 	return item;
-				// })
+				wantListItems: action.value
 			});
 		}
 		default:

@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import queryString from "query-string";
 import { connect } from "react-redux";
-import {
-	setAuthToken,
-	authSuccess,
-	storeAuthInfo,
-	giveCodeToSwappuyoApi
-} from "../actions";
-import { loadAuthToken, saveAuthToken, clearAuthToken } from "../local-storage";
-import jwtDecode from "jwt-decode";
+import { giveCodeToSwappuyoApi } from "../actions";
 import { Redirect } from "react-router-dom";
 
 class RedditTokenRedirectPage extends Component {
@@ -19,12 +12,6 @@ class RedditTokenRedirectPage extends Component {
 	// 	this.props.dispatch(authSuccess(decodedToken.user));
 	// 	saveAuthToken(authToken);
 	// };
-
-	componentWillMount() {
-		let authToken = loadAuthToken();
-		console.log(authToken);
-		storeAuthInfo(authToken, this.props.dispatch);
-	}
 
 	componentDidMount() {
 		console.log(this.props);
