@@ -15,3 +15,21 @@ export const clearAuthToken = () => {
 		localStorage.removeItem("authToken");
 	} catch (e) {}
 };
+
+export const clearRefreshToken = () => {
+	try {
+		localStorage.removeItem("refreshToken");
+	} catch (e) {}
+};
+
+export const loadRefreshToken = () => {
+	return localStorage.getItem("refreshToken");
+};
+
+export const saveRefreshToken = refreshToken => {
+	try {
+		localStorage.setItem("refreshToken", refreshToken);
+	} catch (e) {
+		console.log(e);
+	}
+};

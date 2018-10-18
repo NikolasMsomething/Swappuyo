@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { handleTradeExpandAction } from "../actions/index";
+import {
+	handleTradeExpandAction,
+	postWantTradeToSwappuyoApi
+} from "../actions/index";
 import Markdown from "markdown-to-jsx";
 import { render } from "react-dom";
 
@@ -15,26 +18,38 @@ const TradeDetails = props => {
 				if (item.expanded) {
 					return (
 						<React.Fragment>
-							<li
-								key={item.itemId}
-								onClick={e => {
-									props.dispatch(handleTradeExpandAction(item.itemId));
-								}}
-							>
+							<li key={item.itemId}>
+								<button
+									onClick={e => {
+										props.dispatch(handleTradeExpandAction(item.itemId));
+									}}
+								>
+									expand
+								</button>
 								{item.itemTitle}
+
+								<div>submitted by {item.itemAuthor}</div>
 								<br />
-								<Markdown>{item.content}</Markdown>
+								<div dangerouslySetInnerHTML={{ __html: item.content }} />
 							</li>
 							<button
-								onClick={e =>
+								onClick={e => {
 									console.log(
 										item.content,
 										item.itemTitle,
 										item.itemAuthor,
 										item.itemUrl,
 										item.itemId
-									)
-								}
+									);
+									props.dispatch(
+										postWantTradeToSwappuyoApi(
+											item.itemTitle,
+											item.itemUrl,
+											item.itemAuthor,
+											props.authToken
+										)
+									);
+								}}
 							>
 								SAVE
 							</button>
@@ -44,13 +59,14 @@ const TradeDetails = props => {
 
 				return (
 					<React.Fragment>
-						<li
-							key={item.itemId}
-							onClick={() => {
-								props.dispatch(handleTradeExpandAction(item.itemId));
-								console.log(typeof item.itemId);
-							}}
-						>
+						<li key={item.itemId}>
+							<button
+								onClick={e => {
+									props.dispatch(handleTradeExpandAction(item.itemId));
+								}}
+							>
+								expand
+							</button>
 							{item.itemTitle}
 						</li>
 					</React.Fragment>
@@ -63,8 +79,10 @@ const TradeDetails = props => {
 function mapStateToProps(state) {
 	console.log(state);
 	return {
+		authToken: state.loginReducer.authToken,
 		items: state.itemsReducer.items,
-		expanded: state.itemsReducer.expanded
+		expanded: state.itemsReducer.expanded,
+		user: state.loginReducer.user
 	};
 }
 

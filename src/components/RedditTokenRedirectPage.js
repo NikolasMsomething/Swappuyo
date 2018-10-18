@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
 	setAuthToken,
 	authSuccess,
-	// GetRefreshTokenFromReddit,
+	storeAuthInfo,
 	giveCodeToSwappuyoApi
 } from "../actions";
 import { loadAuthToken, saveAuthToken, clearAuthToken } from "../local-storage";
@@ -12,22 +12,18 @@ import jwtDecode from "jwt-decode";
 import { Redirect } from "react-router-dom";
 
 class RedditTokenRedirectPage extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	storeAuthInfo = (authToken, dispatch) => {
-		const decodedToken = jwtDecode(authToken);
-		console.log(authToken);
-		this.props.dispatch(setAuthToken(authToken));
-		this.props.dispatch(authSuccess(decodedToken.user));
-		saveAuthToken(authToken);
-	};
+	// storeAuthInfo = (authToken, dispatch) => {
+	// 	const decodedToken = jwtDecode(authToken);
+	// 	console.log(authToken);
+	// 	this.props.dispatch(setAuthToken(authToken));
+	// 	this.props.dispatch(authSuccess(decodedToken.user));
+	// 	saveAuthToken(authToken);
+	// };
 
 	componentWillMount() {
 		let authToken = loadAuthToken();
 		console.log(authToken);
-		this.storeAuthInfo(authToken);
+		storeAuthInfo(authToken, this.props.dispatch);
 	}
 
 	componentDidMount() {

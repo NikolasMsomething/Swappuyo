@@ -3,7 +3,8 @@ import {
 	AUTH_SUCCESS,
 	AUTH_ERROR,
 	CLEAR_AUTH,
-	STORE_REDDIT_TOKENS
+	STORE_REDDIT_TOKENS,
+	STORE_REFRESH_TOKEN
 } from "../actions";
 
 const initialState = {
@@ -54,6 +55,12 @@ export const loginReducer = (state = initialState, action) => {
 				refreshToken: action.value.refresh_token
 			});
 		}
+		case STORE_REFRESH_TOKEN: {
+			return Object.assign({}, state, {
+				refreshToken: action.value
+			});
+		}
+
 		default:
 			return state;
 	}

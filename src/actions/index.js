@@ -97,7 +97,7 @@ export const authError = error => ({
 	error
 });
 
-const storeAuthInfo = (authToken, dispatch) => {
+export const storeAuthInfo = (authToken, dispatch) => {
 	const decodedToken = jwtDecode(authToken);
 	console.log(authToken);
 	dispatch(setAuthToken(authToken));
@@ -264,7 +264,7 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 	console.log(btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"));
 
 	console.log(code);
-	return fetch("http://localhost:8080/api/code", {
+	return fetch(`${API_BASE_URL}/code`, {
 		method: "POST",
 		mode: "cors",
 		headers: {
@@ -285,6 +285,87 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 			console.log(err);
 		});
 };
+export const STORE_REFRESH_TOKEN = "STORE_REFRESH_TOKEN";
+export const storeRefreshToken = val => {
+	return {
+		type: STORE_REFRESH_TOKEN,
+		val
+	};
+};
+// export const postWantTradeToReduxStore = (val) => {
+
+// }
+
+export const postWantTradeToSwappuyoApiRequest = value => {
+	return {
+		type: "POST_TRADE_REQUEST",
+		value
+	};
+};
+
+export const postWantTradeToSwappuyoApiSuccess = value => {
+	return {
+		type: "POST_TRADE_SUCCESS",
+		value
+	};
+};
+export const postWantTradeToSwappuyoApi = (
+	title,
+	url,
+	author,
+	authToken
+) => dispatch => {
+	return fetch(`${API_BASE_URL}/wishlist`, {
+		method: "POST",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: "Bearer " + authToken
+		},
+		body: JSON.stringify({
+			title: title,
+			url: url,
+			author: author
+		})
+	})
+		.then(res => {
+			return res.json();
+		})
+		.then(data => {
+			console.log(data);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
+
+export const getWantTradeToSwappuyoApiSuccess = value => {
+	return {
+		type: "GET_TRADE_SUCCESS",
+		value
+	};
+};
+
+export const getWantTradeFromSwappuyoApi = authToken => dispatch => {
+	return fetch(`${API_BASE_URL}/wishlist`, {
+		method: "GET",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: "Bearer " + authToken
+		}
+	})
+		.then(res => {
+			return res.json();
+		})
+		.then(data => {
+			console.log(data);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
+
 //RedditTokenRedirectActions
 
 // TRADE DETAILS ACTIONS HOME PAGE

@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
-import { getFromRedditHardwareSwap } from "../actions";
-import { loadAuthToken, saveAuthToken, clearAuthToken } from "../local-storage";
+import { getFromRedditHardwareSwap, storeAuthInfo } from "../actions";
+import {
+	loadAuthToken,
+	saveAuthToken,
+	clearAuthToken,
+	loadRefreshToken,
+	saveRefreshToken,
+	clearRefreshToken
+} from "../local-storage";
 import TradeDetails from "./TradeDetails";
 import { Redirect, Route, Link } from "react-router-dom";
 
