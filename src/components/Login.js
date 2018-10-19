@@ -3,10 +3,7 @@ import "./styles/Login.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { postToSwapuyoLoginAction } from "../actions";
 import { connect } from "react-redux";
-import {
-	postToSwapuyoRegisterAction,
-	loginPageRegisterReset
-} from "../actions";
+import { loginPageRegisterReset } from "../actions";
 // export default class Login extends Component {
 //   render() {
 // 	return (

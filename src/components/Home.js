@@ -34,9 +34,7 @@ class Home extends Component {
 				<Header />
 				<div>
 					<h1>Home Page</h1>
-					<ul>
-						<TradeDetails />
-					</ul>
+					<TradeDetails />
 				</div>
 			</React.Fragment>
 		);

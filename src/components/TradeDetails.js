@@ -4,49 +4,55 @@ import {
 	handleTradeExpandAction,
 	postWantTradeToSwappuyoApi
 } from "../actions/index";
+import "./styles/TradeDetails.css";
+import { FaChevronDown } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
+import { IoIosSave } from "react-icons/io";
 
 const TradeDetails = props => {
 	return (
-		<React.Fragment>
+		<ul className="gridBoxTrade">
 			{props.items.map(item => {
 				if (item.expanded) {
 					return (
 						<React.Fragment>
 							<li key={item.itemId}>
 								<button
+									className="btn"
 									onClick={e => {
 										props.dispatch(handleTradeExpandAction(item.itemId));
 									}}
 								>
-									expand
+									<FaChevronUp />
 								</button>
-								{item.itemTitle}
+								<h2>{item.itemTitle}</h2>
 
-								<div>submitted by {item.itemAuthor}</div>
+								<div className="tradeAuthorName">
+									submitted by {item.itemAuthor}
+								</div>
 								<br />
-								<div dangerouslySetInnerHTML={{ __html: item.content }} />
+								<div>
+									<div
+										className="tradeDetailsContentBox"
+										dangerouslySetInnerHTML={{ __html: item.content }}
+									/>
+									<button
+										className="btn-save"
+										onClick={e => {
+											props.dispatch(
+												postWantTradeToSwappuyoApi(
+													item.itemTitle,
+													item.itemUrl,
+													item.itemAuthor,
+													props.authToken
+												)
+											);
+										}}
+									>
+										<IoIosSave />
+									</button>
+								</div>
 							</li>
-							<button
-								onClick={e => {
-									console.log(
-										item.content,
-										item.itemTitle,
-										item.itemAuthor,
-										item.itemUrl,
-										item.itemId
-									);
-									props.dispatch(
-										postWantTradeToSwappuyoApi(
-											item.itemTitle,
-											item.itemUrl,
-											item.itemAuthor,
-											props.authToken
-										)
-									);
-								}}
-							>
-								SAVE
-							</button>
 						</React.Fragment>
 					);
 				}
@@ -55,18 +61,19 @@ const TradeDetails = props => {
 					<React.Fragment>
 						<li key={item.itemId}>
 							<button
+								className="btn"
 								onClick={e => {
 									props.dispatch(handleTradeExpandAction(item.itemId));
 								}}
 							>
-								expand
+								<FaChevronDown />
 							</button>
-							{item.itemTitle}
+							<h2>{item.itemTitle}</h2>
 						</li>
 					</React.Fragment>
 				);
 			})}
-		</React.Fragment>
+		</ul>
 	);
 };
 

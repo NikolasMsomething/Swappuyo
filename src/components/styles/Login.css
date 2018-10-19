@@ -9,7 +9,7 @@
 		font-family: "Gotham-Rounded";
 		margin: 3.8rem auto;
 		padding: 10px;
-		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 2.3);
+		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 0.48);
 		background-color: var(--secondary);
 	}
 
@@ -35,10 +35,10 @@
 	#SignInBtn,
 	#SignUpBtn {
 		margin: 4rem auto;
-		border: 1px solid (--primary);
-		background: #383f63;
+		border: 1px solid var(--fourthdary);
+		background: var(--thirdary);
 		font-family: "Gotham-Rounded";
-		color: var(--secondary);
+		color: var(--fourthdary);
 		border-style: none;
 	}
 

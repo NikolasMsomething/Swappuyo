@@ -1,0 +1,168 @@
+@media only screen and (min-width: 320px) {
+	.gridBoxTrade {
+		padding: 0 0px 10px 0px;
+		list-style: none;
+		display: grid;
+		justify-content: space-around;
+		grid-template-columns: repeat(1, 0.95fr);
+		grid-row-gap: 1rem;
+		margin: 0 auto;
+	}
+
+	.tradeAuthorName {
+		font-family: "Gotham-Italic-Light";
+	}
+
+	.gridBoxTrade h2 {
+		font-family: Gotham-Rounded-Light;
+	}
+
+	.gridBoxTrade li {
+		padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+		margin: 5px;
+		border: 1px solid var(--fourthdary);
+		display: block;
+		flex-direction: column;
+		overflow: auto;
+	}
+
+	/* .gridboxtrade li::-webkit-scrollbar-track {
+		border: 1px solid #000;
+		padding: 2px 0;
+		background-color: #404040;
+	}
+
+	.gridboxtrade li::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		background-color: #737272;
+		border: 1px solid #000;
+	} */
+
+	.gridBoxTrade .btn {
+		width: 48px;
+		height: 30px;
+
+		border-radius: 1px 5px 10px;
+		border: none;
+		background-color: var(--thirdary);
+		color: #ffff;
+		text-transform: uppercase;
+	}
+
+	.gridBoxTrade .btn-save {
+		display: block;
+
+		margin-left: auto;
+		width: 48px;
+		height: 30px;
+		border-radius: 5px 5px 0px;
+		border: none;
+		background-color: #9932cc;
+		color: #ffff;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+	}
+	/* .gridBoxTrade button:nth-child(1) {
+		width: 48px;
+		height: 30px;
+
+		border-radius: 1px 5px 10px;
+		border: none;
+		background-color: var(--thirdary);
+		color: #ffff;
+		text-transform: uppercase;
+	} */
+
+	.tradeDetailsContentBox {
+		justify-content: center;
+		padding: 0 0 9px 0;
+	}
+
+	.tradeDetailsContentBox a {
+		color: var(--secondary);
+	}
+
+	.tradeDetailsContentBox p {
+		font-family: Gotham-Rounded-Light;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	.gridBoxTrade {
+		padding: 0 0px 10px 0px;
+		list-style: none;
+		display: grid;
+		justify-content: space-around;
+		grid-template-columns: repeat(1, 0.95fr);
+		grid-row-gap: 1rem;
+		margin: 0 auto;
+	}
+
+	.tradeAuthorName {
+		font-family: "Gotham-Italic-Light";
+	}
+
+	.gridBoxTrade h2 {
+		font-family: Gotham-Rounded-Light;
+	}
+
+	.gridBoxTrade li {
+		display: flex;
+		grid-template-rows: repeat(10, 1fr);
+		padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+		margin: 5px;
+		border: 1px solid var(--fourthdary);
+	}
+
+	.gridBoxTrade .btn {
+		width: 48px;
+		height: 30px;
+
+		border-radius: 1px 5px 10px;
+		border: none;
+		background-color: var(--thirdary);
+		color: #ffff;
+		text-transform: uppercase;
+	}
+
+	.gridBoxTrade .btn-save {
+		width: 48px;
+		height: 30px;
+		border-radius: 5px 5px 0px;
+		border: none;
+		background-color: #9932cc;
+		color: #ffff;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+	}
+
+	/* .gridBoxTrade button:nth-child(1) {
+	width: 48px;
+	height: 30px;
+
+	border-radius: 1px 5px 10px;
+	border: none;
+	background-color: var(--thirdary);
+	color: #ffff;
+	text-transform: uppercase;
+} */
+
+	.tradeDetailsContentBox {
+		justify-content: center;
+		padding: 0 0 5px 0;
+	}
+
+	.tradeDetailsContentBox ul {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.tradeDetailsContentBox a {
+		color: var(--secondary);
+	}
+
+	.tradeDetailsContentBox p {
+		font-family: Gotham-Rounded-Light;
+	}
+}
