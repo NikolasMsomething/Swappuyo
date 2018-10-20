@@ -14,7 +14,6 @@ class WantList extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Header />
 				<div>
 					<h1>Want List</h1>
 					<ul>

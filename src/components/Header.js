@@ -1,8 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import DrawerToggleButton from "./DrawerToggleButton";
+import "./styles/navbar.css";
 
 const Header = () => (
 	<header>
+		<div>
+			<DrawerToggleButton />
+		</div>
+		<div className="toolbar__logo">Swappuyo</div>
+		<div className="spacer" />
 		<NavLink to="/home" activeClassName="is-active" exact={true}>
 			Home
 		</NavLink>

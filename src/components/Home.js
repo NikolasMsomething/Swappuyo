@@ -31,7 +31,6 @@ class Home extends Component {
 		}
 		return (
 			<React.Fragment>
-				<Header />
 				<div>
 					<h1>Home Page</h1>
 					<SearchComponent />

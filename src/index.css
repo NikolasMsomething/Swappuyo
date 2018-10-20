@@ -45,16 +45,10 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-
 	height: 100%;
 	font-family: "Gotham-Rounded", "Gotham-Rounded-Light";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-header {
-	display: flex;
-	justify-content: space-evenly;
 }
 
 .is-active {

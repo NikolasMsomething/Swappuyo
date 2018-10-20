@@ -218,35 +218,7 @@ export const getFromSubRedditMarkdown = (
 		});
 };
 
-//RedditTokenRedirectActions
-
-// export const GetRefreshTokenFromReddit = code => dispatch => {
-// 	const client_id = "jMNgm9tZ6e0Kig";
-// 	const client_secret = "qVBQ3qeJfe6NzYCMwY8aDh2oCoI";
-// 	console.log(btoa(`${client_id}:${client_secret}`));
-// 	// const body = `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/RedditTokenRedirect`;
-
-// 	return fetch("https://www.reddit.com/api/v1/access_token", {
-// 		method: "POST", // or 'PUT',
-// 		mode: "no-cors",
-// 		headers: {
-// 			Authorization: "Basic " + btoa(`${client_id}:${client_secret}`),
-// 			"Content-Type": "application/x-www-form-urlencoded"
-// 		},
-// 		body: `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/RedditTokenRedirect`
-// 	})
-// 		.then(res => normalizeResponseErrors(res))
-// 		.then(res => {
-// 			console.log(res);
-// 			let gabe = res.json();
-// 			console.log(gabe);
-// 			return res.json();
-// 		})
-// 		.then(response => {
-// 			console.log(response);
-// 		})
-// 		.catch(err => console.log(err));
-// };
+//REDDIT TOKEN ACTIONS //REDDIT TOKEN ACTIONS //REDDIT TOKEN ACTIONS //REDDIT TOKEN ACTIONS
 
 export const STORE_REDDIT_TOKENS = "STORE_REDDIT_TOKENS";
 export const storeRedditTokens = value => {
@@ -289,9 +261,10 @@ export const storeRefreshToken = value => {
 		value
 	};
 };
-// export const postWantTradeToReduxStore = (val) => {
 
-// }
+//REDDIT TOKEN ACTIONS //REDDIT TOKEN ACTIONS //REDDIT TOKEN ACTIONS
+
+// POST WANTS TO SWAPPUYO ACTIONS // POST WANTS TO SWAPPUYO ACTIONS // POST WANTS TO SWAPPUYO ACTIONS
 
 export const postWantTradeToSwappuyoApiRequest = value => {
 	return {
@@ -363,7 +336,17 @@ export const getWantTradeFromSwappuyoApi = authToken => dispatch => {
 		});
 };
 
-//RedditTokenRedirectActions
+// POST WANTS TO SWAPPUYO ACTIONS// POST WANTS TO SWAPPUYO ACTIONS// POST WANTS TO SWAPPUYO ACTIONS
+
+//SIDE DRAWER  ACTIONS
+export const TOGGLE_SIDEDRAWER = "TOGGLE_SIDEDRAWER";
+export const toggleSideDrawer = value => {
+	return {
+		type: TOGGLE_SIDEDRAWER,
+		value
+	};
+};
+//SIDE DRAWER  ACTIONS
 
 // TRADE DETAILS ACTIONS HOME PAGE
 
