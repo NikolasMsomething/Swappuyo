@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
 import { getFromRedditHardwareSwap } from "../actions";
-
+import SearchComponent from "./searchComponent";
 import TradeDetails from "./TradeDetails";
 import { Redirect } from "react-router-dom";
 
@@ -34,6 +34,7 @@ class Home extends Component {
 				<Header />
 				<div>
 					<h1>Home Page</h1>
+					<SearchComponent />
 					<TradeDetails />
 				</div>
 			</React.Fragment>

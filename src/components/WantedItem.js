@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 function WantedItem(props) {
+	if (!props.authToken) {
+		return <Redirect to="/login" />;
+	}
+
 	return (
 		<React.Fragment>
 			{props.wantListItems.map(item => {
@@ -20,7 +25,8 @@ function WantedItem(props) {
 function mapStateToProps(state) {
 	console.log(state);
 	return {
-		wantListItems: state.wantListReducer.wantListItems
+		wantListItems: state.wantListReducer.wantListItems,
+		authToken: state.loginReducer.authToken
 	};
 }
 

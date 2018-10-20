@@ -7,7 +7,7 @@ const initialState = {
 
 export const itemsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "HS_TO_STORE": {
+		case "REDDIT_TO_STORE": {
 			return Object.assign({}, state, {
 				items: [...action.value]
 			});

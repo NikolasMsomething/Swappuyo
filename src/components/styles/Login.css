@@ -3,7 +3,7 @@
 		overflow: hidden;
 	}
 
-	form {
+	.LoginForm {
 		display: block;
 		width: 80%;
 		font-family: "Gotham-Rounded";

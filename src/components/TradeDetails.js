@@ -8,6 +8,7 @@ import "./styles/TradeDetails.css";
 import { FaChevronDown } from "react-icons/fa";
 import { FaChevronUp } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
+import SearchComponent from "./searchComponent";
 
 const TradeDetails = props => {
 	return (

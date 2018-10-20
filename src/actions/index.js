@@ -149,9 +149,9 @@ export const handleTradeExpandAction = value => {
 	};
 };
 
-export const hardWareSwapItemToStore = value => {
+export const RedditItemToStore = value => {
 	return {
-		type: "HS_TO_STORE",
+		type: "REDDIT_TO_STORE",
 		value
 	};
 };
@@ -179,16 +179,19 @@ export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 				}
 			});
 			console.log(arr);
-			dispatch(hardWareSwapItemToStore(arr));
+			dispatch(RedditItemToStore(arr));
 		})
 		.catch(err => {
 			console.log(err);
 		});
 };
 
-export const getFromRedditHardwareSwapMarkdown = refreshToken => dispatch => {
+export const getFromSubRedditMarkdown = (
+	refreshToken,
+	subreddit
+) => dispatch => {
 	console.log(refreshToken);
-	return fetch(`${API_BASE_URL}/hardwareswap?refreshToken=${refreshToken}`)
+	return fetch(`${API_BASE_URL}/${subreddit}?refreshToken=${refreshToken}`)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
@@ -202,13 +205,13 @@ export const getFromRedditHardwareSwapMarkdown = refreshToken => dispatch => {
 						itemUrl: item.url,
 						itemTitle: item.title,
 						itemAuthor: item.author,
-						content: item.selftext,
+						content: item.selftext_html,
 						expanded: false
 					});
 				}
 			});
 			console.log(arr);
-			dispatch(hardWareSwapItemToStore(arr));
+			dispatch(RedditItemToStore(arr));
 		})
 		.catch(err => {
 			console.log(err);
