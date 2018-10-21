@@ -24,18 +24,19 @@ class AppRouter extends Component {
 	};
 
 	render() {
-		let sideDrawer = null;
 		let backdrop;
-
+		let header;
 		if (this.props.sideDrawerOpen) {
-			sideDrawer = <SideDrawer />;
 			backdrop = <Backdrop />;
+		}
+		if (this.props.authToken && this.props.refreshToken) {
+			header = <Header />;
 		}
 		return (
 			<BrowserRouter>
 				<React.Fragment>
-					<Header />
-					{sideDrawer}
+					{header}
+					<SideDrawer />
 					{backdrop}
 					<Switch>
 						<Route path="/login" component={Login} exact={true} />
@@ -60,7 +61,9 @@ class AppRouter extends Component {
 
 function mapStateToProps(state) {
 	return {
-		sideDrawerOpen: state.sideDrawerReducer.sideDrawerOpen
+		sideDrawerOpen: state.sideDrawerReducer.sideDrawerOpen,
+		authToken: state.loginReducer.authToken,
+		refreshToken: state.loginReducer.refreshToken
 	};
 }
 
