@@ -26,7 +26,7 @@ export const postToSwapuyoRegisterAction = (
 	username,
 	password
 ) => dispatch => {
-	return fetch(`${API_BASE_URL}/user`, {
+	return fetch(`${API_BASE_URL}/api/user`, {
 		method: "POST", // or 'PUT',
 		mode: "cors",
 		headers: {
@@ -99,7 +99,7 @@ export const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const postToSwapuyoLoginAction = (username, password) => dispatch => {
-	return fetch(`${API_BASE_URL}/login`, {
+	return fetch(`${API_BASE_URL}/api/login`, {
 		method: "POST", // or 'PUT',
 		mode: "cors",
 		headers: {
@@ -159,7 +159,7 @@ export const RedditItemToStore = value => {
 //CALL TO OUR API WHICH CALLS TO REDDIT API USING OUR REFRESH TOKEN!! CRUCIAL STRUCTURE
 export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 	console.log(refreshToken);
-	return fetch(`${API_BASE_URL}/hardwareswap?refreshToken=${refreshToken}`)
+	return fetch(`${API_BASE_URL}/api/hardwareswap?refreshToken=${refreshToken}`)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
@@ -191,7 +191,7 @@ export const getFromSubRedditMarkdown = (
 	subreddit
 ) => dispatch => {
 	console.log(refreshToken);
-	return fetch(`${API_BASE_URL}/${subreddit}?refreshToken=${refreshToken}`)
+	return fetch(`${API_BASE_URL}/api/${subreddit}?refreshToken=${refreshToken}`)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
@@ -232,7 +232,7 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 	console.log(btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"));
 
 	console.log(code);
-	return fetch(`${API_BASE_URL}/code`, {
+	return fetch(`${API_BASE_URL}/api/code`, {
 		method: "POST",
 		mode: "cors",
 		headers: {
@@ -285,7 +285,7 @@ export const postWantTradeToSwappuyoApi = (
 	author,
 	authToken
 ) => dispatch => {
-	return fetch(`${API_BASE_URL}/wishlist`, {
+	return fetch(`${API_BASE_URL}/api/wishlist`, {
 		method: "POST",
 		mode: "cors",
 		headers: {
@@ -317,7 +317,7 @@ export const getWantTradeFromSwappuyoApiSuccess = value => {
 };
 
 export const getWantTradeFromSwappuyoApi = authToken => dispatch => {
-	return fetch(`${API_BASE_URL}/wishlist`, {
+	return fetch(`${API_BASE_URL}/api/wishlist`, {
 		method: "GET",
 		mode: "cors",
 		headers: {
