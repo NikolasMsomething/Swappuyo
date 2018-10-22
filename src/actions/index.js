@@ -188,17 +188,37 @@ export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 
 export const getFromSubRedditMarkdown = (
 	refreshToken,
-	subreddit
+	subreddit,
+	redditFilter
 ) => dispatch => {
 	console.log(refreshToken);
-	return fetch(`${API_BASE_URL}/api/${subreddit}?refreshToken=${refreshToken}`)
+	return fetch(
+		`${API_BASE_URL}/api/${subreddit}?refreshToken=${refreshToken}&redditFilter=${redditFilter}`
+	)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
-			console.log(results);
-			let twentyFiveResults = results;
+			let fortyResults;
+
+			if (subreddit === "new" || subreddit === "rising") {
+				fortyResults = results;
+				let arr = [];
+				fortyResults.forEach((item, index) => {
+					arr.push({
+						itemId: item.id,
+						itemUrl: item.url,
+						itemTitle: item.title,
+						itemAuthor: item.author,
+						content: item.selftext_html,
+						expanded: false
+					});
+				});
+				console.log(arr);
+				dispatch(RedditItemToStore(arr));
+			}
+			fortyResults = results;
 			let arr = [];
-			twentyFiveResults.forEach((item, index) => {
+			fortyResults.forEach((item, index) => {
 				if (index !== 1 && index !== 0) {
 					arr.push({
 						itemId: item.id,

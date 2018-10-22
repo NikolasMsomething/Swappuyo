@@ -16,9 +16,9 @@ class WantList extends Component {
 			<React.Fragment>
 				<div>
 					<h1>Want List</h1>
-					<ul>
+					
 						<WantedItem />
-					</ul>
+					
 				</div>
 			</React.Fragment>
 		);

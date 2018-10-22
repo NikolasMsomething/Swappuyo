@@ -8,11 +8,15 @@ function SearchComponent(props) {
 			onSubmit={e => {
 				e.preventDefault();
 				let subreddit = e.currentTarget.tradeReddits.value;
+				let redditFilter = e.currentTarget.redditSort.value;
 				console.log(e.currentTarget.tradeReddits.value);
-				props.dispatch(getFromSubRedditMarkdown(props.refreshToken, subreddit));
+				console.log(e.currentTarget.redditSort.value);
+				props.dispatch(
+					getFromSubRedditMarkdown(props.refreshToken, subreddit, redditFilter)
+				);
 			}}
 		>
-			<label forHtml="search"> </label>
+			<label forhtml="search"> </label>
 			<select name="tradeReddits">
 				<option name="hardwareswap" value="hardwareswap">
 					hardwareswap
@@ -25,6 +29,17 @@ function SearchComponent(props) {
 				</option>
 				<option name="AVexchange" value="AVexchange">
 					AVexchange
+				</option>
+			</select>
+			<select name="redditSort">
+				<option name="hot" value="hot">
+					hot
+				</option>
+				<option name="rising" value="rising">
+					rising
+				</option>
+				<option name="new" value="new">
+					new
 				</option>
 			</select>
 			<input type="submit" />
