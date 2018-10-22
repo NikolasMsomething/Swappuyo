@@ -1,18 +1,61 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
+
+:root {
+	--primary: #d9d9d9;
+	--secondary: #4484ce;
+	--thirdary: #fa9f15;
+	--fourthdary: #0f1626;
 }
 
-header {
-  display: flex;
-  justify-content: space-evenly;
+body {
+	background-color: var(--primary);
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "Gotham-Rounded";
+	src: url("./components/styles/fonts/GothamRoundedMedium_21022.ttf");
+}
+
+@font-face {
+	font-family: "Gotham-Rounded-Light";
+	src: url("./components/styles/fonts/GothamRoundedLight_21020.ttf");
+}
+
+@font-face {
+	font-family: "Gotham-Italic-Light";
+	src: url("./components/styles/fonts/GothamRounded-LightItalic.otf");
+}
+
+@font-face {
+	font-family: "Gotham-Italic-Medium";
+	src: url("./components/styles/fonts/GothamRounded-MediumItalic.otf");
+}
+
+* {
+	box-sizing: border-box;
+}
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: "Gotham-Rounded", "Gotham-Rounded-Light";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .is-active {
-  font-weight: 800;
+	font-weight: 800;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+	}
 }

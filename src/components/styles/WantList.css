@@ -1,0 +1,22 @@
+.wantListContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	background: #fff;
+	grid-gap: 2px;
+	min-height: 0;
+	min-width: 0;
+}
+
+.wantListItem a {
+	display: block;
+	float: left;
+}
+
+.wantListItem {
+	margin: 0 auto;
+	width: 460px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	word-wrap: break-word;
+}
