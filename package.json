@@ -8,6 +8,7 @@
     "markdown-to-jsx": "^6.7.4",
     "query-string": "^6.2.0",
     "react": "^16.5.2",
+    "react-awesome-button": "^5.0.0",
     "react-dom": "^16.5.2",
     "react-icons": "^3.2.1",
     "react-redux": "^5.0.7",

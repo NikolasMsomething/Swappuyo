@@ -299,6 +299,35 @@ export const postWantTradeToSwappuyoApiSuccess = value => {
 		value
 	};
 };
+
+export const deleteWantTradeFromSwappuyoApi = (
+	authToken,
+	itemId
+) => async dispatch => {
+	try {
+		let deletedItemResponse = await fetch(
+			`${API_BASE_URL}/api/wishlist/${itemId}`,
+			{
+				method: "DELETE",
+				mode: "cors",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + authToken
+				}
+			}
+		);
+		console.log(deletedItemResponse);
+		let getItems = await dispatch(getWantTradeFromSwappuyoApi(authToken));
+		try {
+		} catch (err) {
+			alert(err);
+		}
+		console.log(getItems);
+	} catch (error) {
+		alert(error);
+	}
+}; //testing async await here!
+
 export const postWantTradeToSwappuyoApi = (
 	title,
 	url,

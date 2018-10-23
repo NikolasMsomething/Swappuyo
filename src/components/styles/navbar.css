@@ -1,13 +1,22 @@
-header {
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,600");
+
+.header-bar {
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
 	height: 80px;
 	padding: 0.8rem;
+	background: #4b5a68;
+	font-family: "Work Sans", sans-serif;
+	text-transform: uppercase;
+	font-weight: 800;
+	height: 5rem;
 }
 
-.toolbar__logo {
+.toolbar__logo img {
 	margin-left: 1rem;
+	height: 50px;
+	width: auto;
 }
 
 .toolbar_navigation-items ul {
@@ -21,6 +30,24 @@ header {
 	padding: 0 0.5rem;
 }
 
+.tradehub-link {
+	font-weight: 800;
+	color: #ffde42;
+}
+
+.home-link {
+	font-weight: 800;
+	color: #00a676;
+}
+.wantlist-link {
+	font-weight: 800;
+	color: #dd4f6e;
+}
+.contact-link {
+	font-weight: 800;
+	color: #45b8ee;
+}
+
 .toolbar_navigation-items a:hover .toolbar_navigation-items a:active {
 	color: var(--thirdary);
 }
@@ -29,8 +56,21 @@ header {
 	flex: 1;
 }
 
-@media (max-width: 768px) {
+@media only screen and (min-width: 320px) and (max-width: 769px) {
 	.toolbar_navigation-items {
+		display: none;
+	}
+
+	.toolbar__logo img {
+		margin-left: auto;
+		display: block;
+	}
+
+	.header-bar {
+		display: flex;
+		justify-content: space-between;
+	}
+	.spacer {
 		display: none;
 	}
 }

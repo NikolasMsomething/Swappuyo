@@ -34,9 +34,28 @@
 }
 
 .side-drawer a {
-	color: var(--secondary);
 	text-decoration: none;
 	font-size: 1.2rem;
+	font-family: "Work Sans", sans-serif;
+	text-transform: uppercase;
+}
+
+.tradehub-link {
+	font-weight: 800;
+	color: #ffde42;
+}
+
+.home-link {
+	font-weight: 800;
+	color: #00a676;
+}
+.wantlist-link {
+	font-weight: 800;
+	color: #dd4f6e;
+}
+.contact-link {
+	font-weight: 800;
+	color: #45b8ee;
 }
 
 .side-drawer a:hover,

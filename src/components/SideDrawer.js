@@ -14,22 +14,39 @@ const SideDrawer = props => {
 		<nav className={drawerClasses.join("")}>
 			<ul>
 				<li>
-					<NavLink to="/home" activeClassName="is-active" exact={true}>
+					<NavLink
+						className="home-link"
+						to="/home"
+						activeClassName="is-active"
+						exact={true}
+					>
 						Home
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/trade-hub" activeClassName="is-active">
+					<NavLink
+						className="trade-link"
+						to="/trade-hub"
+						activeClassName="is-active"
+					>
 						TradeHub
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/want-list" activeClassName="is-active">
+					<NavLink
+						className="wantlist-link"
+						to="/want-list"
+						activeClassName="is-active"
+					>
 						Want List
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/contact" activeClassName="is-active">
+					<NavLink
+						className="contact-link"
+						to="/contact"
+						activeClassName="is-active"
+					>
 						Contact
 					</NavLink>
 				</li>

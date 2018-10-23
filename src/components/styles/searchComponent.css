@@ -1,0 +1,34 @@
+.select {
+	font-size: 13px;
+	position: relative;
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 2.9%;
+	align-items: center;
+}
+
+.searchForm-OuterDiv .search_categories-sort {
+	width: 120px;
+	height: 30px;
+	background-color: #5b807df6;
+	color: var(--secondary);
+	text-transform: uppercase;
+	font-family: "Work Sans", sans-serif;
+	display: inline-block;
+}
+
+.searchForm-OuterDiv .search_categories-reddits {
+	width: 120px;
+	height: 30px;
+	background-color: #5b807df6;
+	color: var(--secondary);
+	text-transform: uppercase;
+	font-family: "Work Sans", sans-serif;
+
+	display: inline-block;
+}
+
+.searchForm-OuterDiv button {
+	height: 30px;
+}

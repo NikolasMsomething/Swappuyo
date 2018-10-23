@@ -2,9 +2,14 @@
 
 :root {
 	--primary: #d9d9d9;
-	--secondary: #4484ce;
+	--secondary: #ffffff;
 	--thirdary: #fa9f15;
 	--fourthdary: #0f1626;
+}
+
+#root {
+	height: 100%;
+	width: 100%;
 }
 
 body {
@@ -40,6 +45,7 @@ body {
 }
 html {
 	height: 100%;
+	width: 100%;
 }
 
 body {

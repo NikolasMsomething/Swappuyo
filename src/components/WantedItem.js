@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./styles/WantList.css";
+import { IoIosTrash } from "react-icons/io";
+import { deleteWantTradeFromSwappuyoApi } from "../actions/index.js";
 
 function WantedItem(props) {
 	if (!props.authToken) {
@@ -19,11 +21,18 @@ function WantedItem(props) {
 								<h3>{item.author}</h3>
 								<a href={item.url}>{item.url}</a>
 								<button
+									type="primary"
+									className="delete-want-button"
 									onClick={e => {
 										e.preventDefault();
-										console.log(item);
+										console.log(item.id);
+										props.dispatch(
+											deleteWantTradeFromSwappuyoApi(props.authToken, item.id)
+										);
 									}}
-								/>
+								>
+									<IoIosTrash />
+								</button>
 							</li>
 						</React.Fragment>
 					);

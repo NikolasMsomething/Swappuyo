@@ -32,7 +32,7 @@ class Home extends Component {
 		return (
 			<React.Fragment>
 				<div>
-					<h1>Home Page</h1>
+																	
 					<SearchComponent />
 					<TradeDetails />
 				</div>

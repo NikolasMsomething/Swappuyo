@@ -2,36 +2,59 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import DrawerToggleButton from "./DrawerToggleButton";
 import "./styles/navbar.css";
+import { clearAuthToken } from "../local-storage";
 
 const Header = () => {
 	return (
-		<header>
+		<header className="header-bar">
 			<div>
 				<DrawerToggleButton />
 			</div>
-			<div className="toolbar__logo">Swappuyo</div>
+			<div className="toolbar__logo">
+				<img src="https://images-ext-2.discordapp.net/external/0ncRQU_hih4fnE-P2te0Di-05LFYJT5MfGPNfwrI4sU/https/cdn.discordapp.com/attachments/492714183725678615/502705468217622538/white-swappuyo.png" />
+			</div>
 			<div className="spacer" />
 			<div className="toolbar_navigation-items">
 				<ul>
 					<li>
-						<NavLink to="/home" activeClassName="is-active" exact={true}>
+						<NavLink
+							className="home-link"
+							to="/home"
+							activeClassName="is-active"
+							exact={true}
+						>
 							Home
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/trade-hub" activeClassName="is-active">
+						<NavLink
+							className="tradehub-link"
+							to="/trade-hub"
+							activeClassName="is-active"
+						>
 							TradeHub
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/want-list" activeClassName="is-active">
+						<NavLink
+							className="wantlist-link"
+							to="/want-list"
+							activeClassName="is-active"
+						>
 							Want List
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/contact" activeClassName="is-active">
-							Contact
-						</NavLink>
+						<a
+							className="contact-link"
+							onClick={e => {
+								clearAuthToken();
+							}}
+							href="/login"
+							activeClassName="is-active"
+						>
+							Sign Out
+						</a>
 					</li>
 				</ul>
 			</div>
