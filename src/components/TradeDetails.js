@@ -17,7 +17,7 @@ const TradeDetails = props => {
 				if (item.expanded) {
 					return (
 						<React.Fragment>
-							<li key={item.itemId}>
+							<li className="expanded" key={item.itemId}>
 								<button
 									className="btn"
 									onClick={e => {

@@ -25,7 +25,12 @@ class Login extends Component {
 		}
 		return (
 			<div className="MasterFormContainer">
-				<h1 className="SwappuyoLoginTitle">Swappuyo</h1>
+				<h1 className="SwappuyoLoginTitle">
+					<img
+						alt="logo"
+						src="https://media.discordapp.net/attachments/492714183725678615/502705464820105225/black-swappuyo.png"
+					/>
+				</h1>
 				<form
 					className="LoginForm"
 					onSubmit={e => {
@@ -47,7 +52,7 @@ class Login extends Component {
 					<label className=" PasswordLabel" htmlFor="password">
 						Password:
 					</label>
-					<input placeholder="Piccolo" type="text" name="password" />
+					<input placeholder="Piccolo" type="password" name="password" />
 					<input
 						id="SignInBtn"
 						className="SignInBtn"
