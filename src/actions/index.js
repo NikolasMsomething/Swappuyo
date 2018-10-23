@@ -317,7 +317,7 @@ export const deleteWantTradeFromSwappuyoApi = (
 			}
 		);
 		console.log(deletedItemResponse);
-
+		alert("Item Deleted!");
 		try {
 			await dispatch(getWantTradeFromSwappuyoApi(authToken));
 		} catch (err) {
@@ -351,7 +351,7 @@ export const postWantTradeToSwappuyoApi = (
 			return res.json();
 		})
 		.then(data => {
-			console.log(data);
+			alert("Item Saved!");
 		})
 		.catch(err => {
 			console.log(err);

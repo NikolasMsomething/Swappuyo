@@ -3,7 +3,7 @@ import queryString from "query-string";
 import { connect } from "react-redux";
 import { giveCodeToSwappuyoApi } from "../actions";
 import { Redirect } from "react-router-dom";
-import {clientId } from "../config";
+
 
 class RedditTokenRedirectPage extends Component {
 	// storeAuthInfo = (authToken, dispatch) => {

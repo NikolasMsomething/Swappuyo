@@ -11,7 +11,7 @@ import Header from "../components/Header";
 import SideDrawer from "../components/SideDrawer";
 import Backdrop from "../components/Backdrop/Backdrop.js";
 import { connect } from "react-redux";
-import { clearAuthToken } from "../local-storage";
+
 
 class AppRouter extends Component {
 	state = {
