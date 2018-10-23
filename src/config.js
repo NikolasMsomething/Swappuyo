@@ -7,4 +7,5 @@ export const clientSecret =
 	process.env.REACT_APP_CLIENT_SECRET || "qVBQ3qeJfe6NzYCMwY8aDh2oCoI";
 
 export const redirectURI =
-	process.env.redirectURI || "http://localhost:3000/RedditTokenRedirect";
+	process.env.REACT_APP_REDIRECT_URI ||
+	"http://localhost:3000/RedditTokenRedirect";
