@@ -1,7 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
 import { saveAuthToken, saveRefreshToken } from "../local-storage";
 import jwtDecode from "jwt-decode";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL, clientId, clientSecret } from "../config";
 
 // REGISTER ACTIONS PAGE
 export const postToSwapuyoRegisterSuccess = value => {
@@ -249,7 +249,7 @@ export const storeRedditTokens = value => {
 };
 
 export const giveCodeToSwappuyoApi = code => dispatch => {
-	console.log(btoa("jMNgm9tZ6e0Kig:qVBQ3qeJfe6NzYCMwY8aDh2oCoI"));
+	console.log(btoa(`${clientId}:${clientSecret}`));
 
 	console.log(code);
 	return fetch(`${API_BASE_URL}/api/code`, {
