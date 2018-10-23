@@ -5,6 +5,7 @@ import { getFromRedditHardwareSwap } from "../actions";
 import SearchComponent from "./searchComponent";
 import TradeDetails from "./TradeDetails";
 import { Redirect } from "react-router-dom";
+import { clientId, clientSecret, redirectURI } from "../config";
 
 class Home extends Component {
 	//WARNING! To be deprecated in React v17. Use componentDidMount instead.
@@ -20,7 +21,9 @@ class Home extends Component {
 		if (this.props.refreshToken === undefined && this.props.authToken) {
 			return (
 				<div>
-					<a href="https://www.reddit.com/api/v1/authorize?client_id=07yxX4MKHTyX3A&response_type=code&state=SwappuyoReddit&redirect_uri=https://swappuyo-client.herokuapp.com/RedditTokenRedirect&duration=permanent&scope=privatemessages,read,submit,save,subscribe,edit">
+					<a
+						href={`https://www.reddit.com/api/v1/authorize?client_id=${clientId}&response_type=code&state=SwappuyoReddit&redirect_uri=${redirectURI}&duration=permanent&scope=privatemessages,read,submit,save,subscribe,edit`}
+					>
 						AUTHORIZE
 					</a>
 				</div>
