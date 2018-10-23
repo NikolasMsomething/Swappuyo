@@ -18,7 +18,7 @@ function WantedItem(props) {
 						<React.Fragment>
 							<li className="wantListItem" key={item.id}>
 								<h2>{item.title}</h2>
-								<h3>{item.author}</h3>
+								<h3 className="item-author">submitted by: {item.author}</h3>
 								<a href={item.url}>{item.url}</a>
 								<button
 									type="primary"

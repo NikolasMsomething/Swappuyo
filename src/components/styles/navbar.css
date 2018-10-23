@@ -48,6 +48,10 @@
 	color: #45b8ee;
 }
 
+.toolbar_navigation-items a {
+	text-decoration: none;
+}
+
 .toolbar_navigation-items a:hover .toolbar_navigation-items a:active {
 	color: var(--thirdary);
 }

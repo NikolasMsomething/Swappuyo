@@ -317,12 +317,12 @@ export const deleteWantTradeFromSwappuyoApi = (
 			}
 		);
 		console.log(deletedItemResponse);
-		let getItems = await dispatch(getWantTradeFromSwappuyoApi(authToken));
+
 		try {
+			await dispatch(getWantTradeFromSwappuyoApi(authToken));
 		} catch (err) {
 			alert(err);
 		}
-		console.log(getItems);
 	} catch (error) {
 		alert(error);
 	}
