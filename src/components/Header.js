@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import DrawerToggleButton from "./DrawerToggleButton";
+import DrawerToggleButton from "./HeaderSubComponents/DrawerToggleButton";
 import "./styles/navbar.css";
 import { clearAuthToken } from "../local-storage";
 

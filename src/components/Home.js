@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
 import { getFromRedditHardwareSwap } from "../actions";
-import SearchComponent from "./searchComponent";
-import TradeDetails from "./TradeDetails";
+import SearchComponent from "./HomeSubComponents/searchComponent";
+import TradeDetails from "./HomeSubComponents/TradeDetails";
 import { Redirect } from "react-router-dom";
 import { clientId, clientSecret, redirectURI } from "../config";
 

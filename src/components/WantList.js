@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
+import Header from "./Header";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import WantedItem from "./WantedItem";
+import WantedItem from "./WantListSubComponents/WantedItem";
 import { getWantTradeFromSwappuyoApi } from "../actions/index";
 
 class WantList extends Component {

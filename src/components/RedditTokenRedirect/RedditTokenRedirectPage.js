@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import queryString from "query-string";
 import { connect } from "react-redux";
-import { giveCodeToSwappuyoApi } from "../actions";
+import { giveCodeToSwappuyoApi } from "../../actions";
 import { Redirect } from "react-router-dom";
-
 
 class RedditTokenRedirectPage extends Component {
 	// storeAuthInfo = (authToken, dispatch) => {

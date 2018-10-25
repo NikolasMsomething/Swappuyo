@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import "./styles/WantList.css";
+import "../styles/WantList.css";
 import { IoIosTrash } from "react-icons/io";
-import { deleteWantTradeFromSwappuyoApi } from "../actions/index.js";
+import { deleteWantTradeFromSwappuyoApi } from "../../actions/index";
 
 function WantedItem(props) {
 	if (!props.authToken) {

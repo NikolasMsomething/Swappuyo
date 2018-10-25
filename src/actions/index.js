@@ -399,6 +399,12 @@ export const toggleSideDrawer = value => {
 
 // TRADE DETAILS ACTIONS HOME PAGE
 
-//WANTLIST PAGE
-
-//WANTLIST PAGE
+//LANDING PAGE
+export const LANDING_TOGGLE = "LANDING_TOGGLE";
+export const LandingPage = value => {
+	return {
+		type: LANDING_TOGGLE,
+		value
+	};
+};
+//LANDING PAGE

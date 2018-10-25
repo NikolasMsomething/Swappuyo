@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getFromSubRedditMarkdown } from "../actions";
-import "./styles/searchComponent.css";
+import { getFromSubRedditMarkdown } from "../../actions";
+import "../styles/searchComponent.css";
 import { MdSearch } from "react-icons/md";
 
 function SearchComponent(props) {
