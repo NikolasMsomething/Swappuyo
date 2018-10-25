@@ -11,10 +11,8 @@ import SideDrawer from "../components/SideDrawer";
 import Backdrop from "../components/Backdrop/Backdrop.js";
 import { connect } from "react-redux";
 import LandingPage from "../components/LandingPage";
-import createHistory from "history/createBrowserHistory";
 
 //HISTORY CREATED SO I CAN MAKE LANDING PAGE NOT HOLD HEADER
-const history = createHistory();
 
 class AppRouter extends Component {
 	state = {
@@ -30,21 +28,12 @@ class AppRouter extends Component {
 	render() {
 		let backdrop;
 		let header;
+
 		if (this.props.sideDrawerOpen) {
 			backdrop = <Backdrop />;
 		}
 		if (this.props.authToken && this.props.refreshToken) {
 			header = <Header />;
-		}
-
-		if (history.location.pathname === "/") {
-			console.log(this.props);
-			header = null;
-		}
-
-		if (history.location.pathname === "/register") {
-			console.log(this.props);
-			header = null;
 		}
 
 		return (

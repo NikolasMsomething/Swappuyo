@@ -1,9 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import "./styles/LandingPage.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 const LandingPage = props => {
+	if (props.authToken) {
+		return <Redirect to="/home" />;
+	}
+
 	return (
 		<React.Fragment>
 			<div className="landing-box-1">
@@ -14,7 +18,7 @@ const LandingPage = props => {
 					laughs. Though to a select few, Reddit is meant for a sole purpose,
 					and that purpose is to{" "}
 					<em>
-						<NavLink className="landing-box-1-tradeword" to="/register">
+						<NavLink className="landing-box-1-tradeword" to="/home">
 							trade
 						</NavLink>
 					</em>
@@ -29,7 +33,7 @@ const LandingPage = props => {
 					All your trading sub-reddits in one place
 				</h2>
 				<div className="landing-box-2-img-box">
-					<img src="https://i.imgur.com/IRsGVjM.png" />
+					<img alt="img-ex" src="https://i.imgur.com/IRsGVjM.png" />
 				</div>
 				<p className="landing-infos-2">
 					Swappuyo is a fast and efficient way to view and save Reddit trades on
@@ -43,7 +47,9 @@ const LandingPage = props => {
 };
 
 function mapStateToProps(state) {
-	return state;
+	return {
+		authToken: state.loginReducer.authToken
+	};
 }
 
 export default connect(mapStateToProps)(LandingPage);

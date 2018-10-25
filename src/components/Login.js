@@ -73,7 +73,6 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
 		didRegister: state.registerReducer.didRegister,
 		authToken: state.loginReducer.authToken

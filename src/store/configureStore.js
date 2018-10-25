@@ -17,6 +17,5 @@ if (authToken) {
 
 if (refreshToken) {
 	store.dispatch(storeRefreshToken(refreshToken));
-	console.log(refreshToken);
 }
 export default store;

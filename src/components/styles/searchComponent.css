@@ -4,7 +4,7 @@
 	height: 50px;
 	display: flex;
 	justify-content: flex-end;
-	margin-right: 2.9%;
+	margin-right: 2.89%;
 	align-items: center;
 }
 
@@ -31,4 +31,28 @@
 
 .searchForm-OuterDiv button {
 	height: 30px;
+}
+
+@media (min-width: 320px) and (max-width: 421px) {
+	.select {
+		font-size: 13px;
+		position: relative;
+		height: 50px;
+		display: flex;
+		justify-content: flex-end;
+		margin-right: 3.6%;
+		align-items: center;
+	}
+}
+
+@media (min-width: 422px) and (max-width: 800px) {
+	.select {
+		font-size: 13px;
+		position: relative;
+		height: 50px;
+		display: flex;
+		justify-content: flex-end;
+		margin-right: 3.45%;
+		align-items: center;
+	}
 }

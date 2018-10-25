@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "../styles/WantList.css";
@@ -15,26 +15,23 @@ function WantedItem(props) {
 			<ul className="wantListContainer">
 				{props.wantListItems.map(item => {
 					return (
-						<React.Fragment>
-							<li className="wantListItem" key={item.id}>
-								<h2>{item.title}</h2>
-								<h3 className="item-author">submitted by: {item.author}</h3>
-								<a href={item.url}>{item.url}</a>
-								<button
-									type="primary"
-									className="delete-want-button"
-									onClick={e => {
-										e.preventDefault();
-										console.log(item.id);
-										props.dispatch(
-											deleteWantTradeFromSwappuyoApi(props.authToken, item.id)
-										);
-									}}
-								>
-									<IoIosTrash />
-								</button>
-							</li>
-						</React.Fragment>
+						<li className="wantListItem" key={item.id}>
+							<h2>{item.title}</h2>
+							<h3 className="item-author">submitted by: {item.author}</h3>
+							<a href={item.url}>{item.url}</a>
+							<button
+								type="primary"
+								className="delete-want-button"
+								onClick={e => {
+									e.preventDefault();
+									props.dispatch(
+										deleteWantTradeFromSwappuyoApi(props.authToken, item.id)
+									);
+								}}
+							>
+								<IoIosTrash />
+							</button>
+						</li>
 					);
 				})}
 			</ul>
@@ -43,7 +40,6 @@ function WantedItem(props) {
 }
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
 		wantListItems: state.wantListReducer.wantListItems,
 		authToken: state.loginReducer.authToken

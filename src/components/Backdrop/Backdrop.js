@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Backdrop.css";
 import { connect } from "react-redux";
 import { toggleSideDrawer } from "../../actions";

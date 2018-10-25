@@ -28,10 +28,11 @@
 		-webkit-box-shadow: 0 10px 6px -6px #777;
 		-moz-box-shadow: 0 10px 6px -6px #777;
 		box-shadow: 0 10px 6px -6px #777;
+		-webkit-transition: height 2s; /* Safari */
 	}
 
 	.gridBoxTrade .expanded {
-		padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+		padding: 0.75rem 0.75rem 1.5rem 0.75rem;
 		margin: 5px;
 		display: block;
 		flex-direction: column;
@@ -41,6 +42,7 @@
 		-webkit-box-shadow: 0 10px 6px -6px #777;
 		-moz-box-shadow: 0 10px 6px -6px #777;
 		box-shadow: 0 10px 6px -6px #777;
+		-webkit-transition: height 2s; /* Safari */
 	}
 
 	/* .gridboxtrade li::-webkit-scrollbar-track {
@@ -115,8 +117,6 @@
 		grid-template-columns: repeat(1, 0.95fr);
 		grid-row-gap: 1rem;
 		margin: 0 auto;
-
-		transition: transform 2s ease-out;
 	}
 
 	.tradeAuthorName {
@@ -133,6 +133,7 @@
 		display: block;
 		flex-direction: column;
 		height: 100%;
+		max-width: 100%;
 		color: #241d2b;
 		background-color: var(--secondary);
 		-webkit-box-shadow: 0 10px 6px -6px #777;
@@ -279,6 +280,13 @@
 		white-space: nowrap;
 		text-align: left !important;
 		font-weight: 600;
+	}
+
+	.gridBoxTrade h1,
+	.gridBoxTrade h2,
+	.gridBoxTrade h3,
+	.gridBoxTrade h4 {
+		word-break: break-all;
 	}
 	/* DYNAMIC TABLES */
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/SideDrawer.css";
 import { connect } from "react-redux";
@@ -18,7 +18,7 @@ const SideDrawer = props => {
 					<NavLink
 						className="home-link"
 						to="/home"
-						activeClassName="is-active"
+						activeclassname="is-active"
 						exact={true}
 					>
 						Home
@@ -28,7 +28,7 @@ const SideDrawer = props => {
 					<NavLink
 						className="trade-link"
 						to="/trade-hub"
-						activeClassName="is-active"
+						activeclassname="is-active"
 					>
 						TradeHub
 					</NavLink>
@@ -37,7 +37,7 @@ const SideDrawer = props => {
 					<NavLink
 						className="wantlist-link"
 						to="/want-list"
-						activeClassName="is-active"
+						activeclassname="is-active"
 					>
 						Want List
 					</NavLink>
@@ -49,7 +49,7 @@ const SideDrawer = props => {
 						}}
 						className="contact-link"
 						href="/login"
-						activeClassName="is-active"
+						activeclassname="is-active"
 					>
 						Sign Out
 					</a>
