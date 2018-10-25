@@ -22,10 +22,9 @@ class Home extends Component {
 			return (
 				<div>
 					<Route
-						path="/authorize"
+						path="/"
 						component={() =>
-							(window.location =
-								"https://www.reddit.com/api/v1/authorize?client_id=${clientId}&response_type=code&state=SwappuyoReddit&redirect_uri=${redirectURI}&duration=permanent&scope=privatemessages,read,submit,save,subscribe,edit")
+							(window.location = `https://www.reddit.com/api/v1/authorize?client_id=${clientId}&response_type=code&state=SwappuyoReddit&redirect_uri=${redirectURI}&duration=permanent&scope=privatemessages,read,submit,save,subscribe,edit`)
 						}
 					/>
 				</div>
