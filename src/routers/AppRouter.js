@@ -42,6 +42,11 @@ class AppRouter extends Component {
 			header = null;
 		}
 
+		if (history.location.pathname === "/register") {
+			console.log(this.props);
+			header = null;
+		}
+
 		return (
 			<BrowserRouter>
 				<React.Fragment>

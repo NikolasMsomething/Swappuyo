@@ -6,7 +6,7 @@ import { clearAuthToken } from "../local-storage";
 
 const Header = () => {
 	return (
-		<header className="header-bar">
+		<header role="Navigation" className="header-bar">
 			<div>
 				<DrawerToggleButton />
 			</div>
@@ -18,6 +18,7 @@ const Header = () => {
 				<ul>
 					<li>
 						<NavLink
+							role="Link"
 							className="home-link"
 							to="/home"
 							activeClassName="is-active"
@@ -28,6 +29,7 @@ const Header = () => {
 					</li>
 					<li>
 						<NavLink
+							role="Link"
 							className="tradehub-link"
 							to="/trade-hub"
 							activeClassName="is-active"
@@ -37,6 +39,7 @@ const Header = () => {
 					</li>
 					<li>
 						<NavLink
+							role="Link"
 							className="wantlist-link"
 							to="/want-list"
 							activeClassName="is-active"

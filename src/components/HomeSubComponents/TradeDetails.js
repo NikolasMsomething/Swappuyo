@@ -11,7 +11,7 @@ import { IoIosSave } from "react-icons/io";
 
 const TradeDetails = props => {
 	return (
-		<ul className="gridBoxTrade">
+		<ul role="Main" className="gridBoxTrade">
 			{props.items.map(item => {
 				if (item.expanded) {
 					return (

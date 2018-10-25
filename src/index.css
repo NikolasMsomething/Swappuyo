@@ -5,6 +5,7 @@
 	--secondary: #ffffff;
 	--thirdary: #fa9f15;
 	--fourthdary: #0f1626;
+	--quadrary: rgb(131, 131, 226);
 }
 
 #root {
@@ -38,6 +39,21 @@ body {
 @font-face {
 	font-family: "Gotham-Italic-Medium";
 	src: url("./components/styles/fonts/GothamRounded-MediumItalic.otf");
+}
+
+@font-face {
+	font-family: "Metropolis-Light";
+	src: url("./components/styles/fonts/Metropolis-Light.ttf");
+}
+
+@font-face {
+	font-family: "Metropolis-Medium";
+	src: url("./components/styles/fonts/Metropolis-Medium.ttf");
+}
+
+@font-face {
+	font-family: "Metropolis-Italic-Medium";
+	src: url("./components/styles/fonts/Metropolis-MediumItalic.ttf");
 }
 
 * {

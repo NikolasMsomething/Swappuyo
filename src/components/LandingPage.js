@@ -1,26 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./styles/LandingPage.css";
+import { NavLink } from "react-router-dom";
 
 const LandingPage = props => {
 	return (
-		<div>
-			<h1>Trading on Reddit taken seriously</h1>
-			<p>
-				Reddit can mean a lot of different things to a lot of different people.
-				Some people look to it for community, news, or even simple laughs.
-				Though to a select few, Reddit is meant for a sole purpose, and that
-				purpose is to trade.{" "}
-			</p>
-
-			<h2>Introducing Swappuyo</h2>
-			<p>
-				Swappuyo is a fast and efficient way to view and save Reddit trades on
-				the go or at home. It effectively eliminates the incessant need to visit
-				the whole Reddit website, when we know all we want to do is trade.
-			</p>
-			<h3>Getting to startuyod</h3>
-			<p>Click here to get started!</p>
-		</div>
+		<React.Fragment>
+			<div className="landing-box-1">
+				<h1 className="landing-box-1-h1">Trading on Reddit taken seriously.</h1>
+				<p className="landing-infos">
+					Reddit can mean a lot of different things to a lot of different
+					people. Some people look to it for community, news, or even simple
+					laughs. Though to a select few, Reddit is meant for a sole purpose,
+					and that purpose is to{" "}
+					<em>
+						<NavLink className="landing-box-1-tradeword" to="/register">
+							trade
+						</NavLink>
+					</em>
+					.
+					<NavLink className="get-started-link" to="/register">
+						Click here to get started!
+					</NavLink>
+				</p>
+			</div>
+			<div className="landing-box-2">
+				<h2 className="landing-box-2-h2">
+					All your trading sub-reddits in one place
+				</h2>
+				<div className="landing-box-2-img-box">
+					<img src="https://i.imgur.com/IRsGVjM.png" />
+				</div>
+				<p className="landing-infos-2">
+					Swappuyo is a fast and efficient way to view and save Reddit trades on
+					the go or at home. It effectively eliminates the incessant need to
+					visit the whole Reddit website, when all we know we want to do is
+					trade.
+				</p>
+			</div>
+		</React.Fragment>
 	);
 };
 
