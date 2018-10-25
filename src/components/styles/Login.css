@@ -1,4 +1,4 @@
-@media only screen and (min-width: 320px) and (max-width: 650px) {
+@media only screen and (min-width: 320px) and (max-width: 550px) {
 	.MasterFormContainer {
 		overflow: hidden;
 	}
@@ -66,11 +66,82 @@
 	}
 
 	.SwappuyoLoginTitle img {
-		width: 250px;
+		width: 330px;
 	}
 }
 
-@media only screen and (min-width: 651px) and (max-width: 1299px) {
+@media only screen and (min-width: 551px) and (max-width: 1049px) {
+	.MasterFormContainer {
+		overflow: hidden;
+	}
+	.LoginForm {
+		display: block;
+
+		width: 400px;
+		font-family: "Gotham-Rounded";
+		margin: 3.8rem auto;
+		padding: 10px;
+		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 0.48);
+		background-color: rgb(40, 95, 139);
+	}
+
+	.LoginForm input {
+		display: block;
+		margin: 1.4rem auto;
+		width: 90%;
+		height: 48px;
+		padding: 10px;
+		font-size: 1.3rem;
+	}
+
+	.UsernameLabel,
+	.PasswordLabel,
+	.NameLabel,
+	.EmailLabel {
+		display: block;
+		color: #ffc70e;
+		margin: 1% 0 1% 0;
+		font-family: "Gotham-Rounded-Light";
+	}
+
+	#SignInBtn,
+	#SignUpBtn {
+		margin: 4rem auto;
+		border: 1px solid var(--fourthdary);
+		background: var(--thirdary);
+		font-family: "Gotham-Rounded";
+		color: var(--fourthdary);
+		border-style: none;
+	}
+
+	#SignInBtn:hover {
+		font-family: "Gotham-Rounded";
+		font-size: 1.38rem;
+	}
+
+	.DontHaveAccountLink {
+		text-decoration: none;
+		color: var(--primary);
+	}
+
+	.DontHaveAccountLink:hover {
+		text-decoration: none;
+		color: var(--primary);
+	}
+
+	.SwappuyoLoginTitle {
+		margin-top: 5rem;
+		text-align: center;
+		color: var(--secondary);
+		font-family: "Gotham-Rounded-Light";
+	}
+
+	.SwappuyoLoginTitle img {
+		width: 290px;
+	}
+}
+
+@media only screen and (min-width: 1051px) and (max-width: 1299px) {
 	.MasterFormContainer {
 		overflow: hidden;
 	}
@@ -137,18 +208,18 @@
 	}
 
 	.SwappuyoLoginTitle img {
-		width: 290px;
+		width: 330px;
 	}
 }
 
-@media only screen and (min-width: 1300px) and (max-width: 2000px) {
+@media only screen and (min-width: 1300px) and (max-width: 2160px) {
 	.MasterFormContainer {
 		overflow: hidden;
 	}
 
 	.LoginForm {
 		display: block;
-		width: 38%;
+		width: 26%;
 		font-family: "Gotham-Rounded";
 		margin: 3.8rem auto;
 		padding: 10px;
