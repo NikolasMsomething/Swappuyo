@@ -1,7 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
 import { saveAuthToken, saveRefreshToken } from "../local-storage";
 import jwtDecode from "jwt-decode";
-import { API_BASE_URL, clientId, clientSecret } from "../config";
+import { API_BASE_URL } from "../config";
 
 // REGISTER ACTIONS PAGE
 export const postToSwapuyoRegisterSuccess = value => {
@@ -48,14 +48,8 @@ export const postToSwapuyoRegisterAction = (
 			return dispatch(postToSwapuyoRegisterSuccess());
 		})
 		.catch(error => {
-			console.log(error);
 			let err = error.message || error.error.details[0].message;
-			// if (error.message) {
-			// 	console.error(error.message);
-			// }
-			// if (error.error) {
-			// 	alert(error.error);
-			// }
+
 			alert(err);
 		});
 };
@@ -92,7 +86,6 @@ export const authError = error => ({
 
 export const storeAuthInfo = (authToken, dispatch) => {
 	const decodedToken = jwtDecode(authToken);
-	console.log(authToken);
 	dispatch(setAuthToken(authToken));
 	dispatch(authSuccess(decodedToken.user));
 	saveAuthToken(authToken);
@@ -115,12 +108,10 @@ export const postToSwapuyoLoginAction = (username, password) => dispatch => {
 			return res.json();
 		})
 		.then(res => {
-			console.log(res.jwtToken);
 			let jwtToken = res.jwtToken;
 			storeAuthInfo(jwtToken, dispatch);
 		})
 		.catch(error => {
-			console.log(error);
 			let err = error.message || error.error.details[0].message;
 			// if (error.message) {
 			// 	console.error(error.message);
@@ -158,12 +149,10 @@ export const RedditItemToStore = value => {
 
 //CALL TO OUR API WHICH CALLS TO REDDIT API USING OUR REFRESH TOKEN!! CRUCIAL STRUCTURE
 export const getFromRedditHardwareSwap = refreshToken => dispatch => {
-	console.log(refreshToken);
 	return fetch(`${API_BASE_URL}/api/hardwareswap?refreshToken=${refreshToken}`)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
-			console.log(results);
 			let twentyFiveResults = results;
 			let arr = [];
 			twentyFiveResults.forEach((item, index) => {
@@ -178,11 +167,10 @@ export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 					});
 				}
 			});
-			console.log(arr);
 			dispatch(RedditItemToStore(arr));
 		})
 		.catch(err => {
-			console.log(err);
+			alert(err);
 		});
 };
 
@@ -191,7 +179,6 @@ export const getFromSubRedditMarkdown = (
 	subreddit,
 	redditFilter
 ) => dispatch => {
-	console.log(refreshToken);
 	return fetch(
 		`${API_BASE_URL}/api/${subreddit}?refreshToken=${refreshToken}&redditFilter=${redditFilter}`
 	)
@@ -213,7 +200,6 @@ export const getFromSubRedditMarkdown = (
 						expanded: false
 					});
 				});
-				console.log(arr);
 				dispatch(RedditItemToStore(arr));
 			}
 			fortyResults = results;
@@ -230,11 +216,10 @@ export const getFromSubRedditMarkdown = (
 					});
 				}
 			});
-			console.log(arr);
 			dispatch(RedditItemToStore(arr));
 		})
 		.catch(err => {
-			console.log(err);
+			alert(err);
 		});
 };
 
@@ -249,9 +234,6 @@ export const storeRedditTokens = value => {
 };
 
 export const giveCodeToSwappuyoApi = code => dispatch => {
-	console.log(btoa(`${clientId}:${clientSecret}`));
-
-	console.log(code);
 	return fetch(`${API_BASE_URL}/api/code`, {
 		method: "POST",
 		mode: "cors",
@@ -266,12 +248,11 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 			return res.json();
 		})
 		.then(data => {
-			console.log(data);
 			dispatch(storeRedditTokens(data));
 			saveRefreshToken(data.refresh_token);
 		})
 		.catch(err => {
-			console.log(err);
+			alert(err);
 		});
 };
 export const STORE_REFRESH_TOKEN = "STORE_REFRESH_TOKEN";
@@ -305,18 +286,14 @@ export const deleteWantTradeFromSwappuyoApi = (
 	itemId
 ) => async dispatch => {
 	try {
-		let deletedItemResponse = await fetch(
-			`${API_BASE_URL}/api/wishlist/${itemId}`,
-			{
-				method: "DELETE",
-				mode: "cors",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: "Bearer " + authToken
-				}
+		await fetch(`${API_BASE_URL}/api/wishlist/${itemId}`, {
+			method: "DELETE",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + authToken
 			}
-		);
-		console.log(deletedItemResponse);
+		});
 		alert("Item Deleted!");
 		try {
 			await dispatch(getWantTradeFromSwappuyoApi(authToken));
@@ -354,7 +331,7 @@ export const postWantTradeToSwappuyoApi = (
 			alert("Item Saved!");
 		})
 		.catch(err => {
-			console.log(err);
+			alert(err);
 		});
 };
 export const GET_TRADE_SUCCESS = "GET_TRADE_SUCCESS";
@@ -381,7 +358,7 @@ export const getWantTradeFromSwappuyoApi = authToken => dispatch => {
 			dispatch(getWantTradeFromSwappuyoApiSuccess(data));
 		})
 		.catch(err => {
-			console.log(err);
+			alert(err);
 		});
 };
 
@@ -399,6 +376,12 @@ export const toggleSideDrawer = value => {
 
 // TRADE DETAILS ACTIONS HOME PAGE
 
-//WANTLIST PAGE
-
-//WANTLIST PAGE
+//LANDING PAGE
+export const LANDING_TOGGLE = "LANDING_TOGGLE";
+export const LandingPage = value => {
+	return {
+		type: LANDING_TOGGLE,
+		value
+	};
+};
+//LANDING PAGE

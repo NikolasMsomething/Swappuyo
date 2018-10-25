@@ -6,9 +6,14 @@ import { connect } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 
 const Register = props => {
+	if (props.authToken) {
+		return <Redirect to="/home" />;
+	}
+
 	if (props.didRegister) {
 		return <Redirect to="/login" />;
 	}
+
 	return (
 		<React.Fragment>
 			<h1 className="SwappuyoLoginTitle">
@@ -58,7 +63,7 @@ const Register = props => {
 					<NavLink
 						className="AlreadyHaveAccountLink"
 						to="/login"
-						activeClassName="is-active"
+						activeclassname="is-active"
 					>
 						Already have an account?
 					</NavLink>
@@ -69,8 +74,8 @@ const Register = props => {
 };
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
+		authToken: state.loginReducer.authToken,
 		didRegister: state.registerReducer.didRegister,
 		errorMessage: state.registerReducer.errorMessage
 	};

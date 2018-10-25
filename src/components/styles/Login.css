@@ -1,4 +1,4 @@
-@media only screen and (min-width: 320px) and (max-width: 500px) {
+@media only screen and (min-width: 320px) and (max-width: 650px) {
 	.MasterFormContainer {
 		overflow: hidden;
 	}
@@ -11,7 +11,7 @@
 		margin: 3.8rem auto;
 		padding: 10px;
 		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 0.48);
-		background-color: rgb(105, 97, 97);
+		background-color: rgb(40, 95, 139);
 	}
 
 	.LoginForm input {
@@ -28,7 +28,7 @@
 	.NameLabel,
 	.EmailLabel {
 		display: block;
-		color: #85dacc;
+		color: #ffc70e;
 		margin: 1% 0 1% 0;
 		font-family: "Gotham-Rounded-Light";
 	}
@@ -70,19 +70,19 @@
 	}
 }
 
-@media only screen and (min-width: 501px) and (max-width: 1299px) {
+@media only screen and (min-width: 651px) and (max-width: 1299px) {
 	.MasterFormContainer {
 		overflow: hidden;
 	}
 
 	.LoginForm {
 		display: block;
-		width: 60%;
+		width: 38%;
 		font-family: "Gotham-Rounded";
 		margin: 3.8rem auto;
 		padding: 10px;
 		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 0.48);
-		background-color: rgb(105, 97, 97);
+		background-color: rgb(40, 95, 139);
 	}
 
 	.LoginForm input {
@@ -100,7 +100,7 @@
 		font-size: 1.5rem;
 		margin: 0 auto;
 		font-family: "Gotham-Rounded-Light";
-		color: #85dacc;
+		color: #ffc70e;
 	}
 
 	#SignInBtn,
@@ -153,7 +153,7 @@
 		margin: 3.8rem auto;
 		padding: 10px;
 		box-shadow: -8px 10px 5px 1px rgba(0, 0, 0, 0.48);
-		background-color: rgb(105, 97, 97);
+		background-color: rgb(40, 95, 139);
 	}
 
 	.LoginForm input {
@@ -171,7 +171,7 @@
 		font-size: 1.5rem;
 		margin: 0 auto;
 		font-family: "Gotham-Rounded-Light";
-		color: #85dacc;
+		color: #ffc70e;
 	}
 
 	#SignInBtn {

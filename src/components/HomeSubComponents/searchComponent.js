@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { getFromSubRedditMarkdown } from "../actions";
-import "./styles/searchComponent.css";
+import { getFromSubRedditMarkdown } from "../../actions";
+import "../styles/searchComponent.css";
 import { MdSearch } from "react-icons/md";
 
 function SearchComponent(props) {
@@ -13,8 +13,6 @@ function SearchComponent(props) {
 					e.preventDefault();
 					let subreddit = e.currentTarget.tradeReddits.value;
 					let redditFilter = e.currentTarget.redditSort.value;
-					console.log(e.currentTarget.tradeReddits.value);
-					console.log(e.currentTarget.redditSort.value);
 					props.dispatch(
 						getFromSubRedditMarkdown(
 							props.refreshToken,

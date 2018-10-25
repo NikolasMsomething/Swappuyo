@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import { Redirect } from "react-router-dom";
+
 import { connect } from "react-redux";
-import WantedItem from "./WantedItem";
+import WantedItem from "./WantListSubComponents/WantedItem";
 import { getWantTradeFromSwappuyoApi } from "../actions/index";
 
 class WantList extends Component {
 	componentDidMount() {
-		console.log(this.props.authToken);
 		this.props.dispatch(getWantTradeFromSwappuyoApi(this.props.authToken));
 	}
 
@@ -23,7 +21,6 @@ class WantList extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
 		authToken: state.loginReducer.authToken,
 		wantListItems: state.wantListReducer.wantListItems

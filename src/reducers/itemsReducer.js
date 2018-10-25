@@ -22,7 +22,6 @@ export const itemsReducer = (state = initialState, action) => {
 					// }
 					if (item.itemId === action.value) {
 						item.expanded = !item.expanded;
-						console.log("hello");
 						return item;
 					}
 					return item;

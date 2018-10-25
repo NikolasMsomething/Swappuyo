@@ -4,14 +4,15 @@ import Home from "../components/Home";
 import Login from "../components/Login";
 import TradeHub from "../components/TradeHub";
 import WantList from "../components/WantList";
-import Contact from "../components/Contact";
 import Register from "../components/Register";
-import RedditTokenRedirectPage from "../components/RedditTokenRedirectPage";
+import RedditTokenRedirectPage from "../components/RedditTokenRedirect/RedditTokenRedirectPage";
 import Header from "../components/Header";
 import SideDrawer from "../components/SideDrawer";
 import Backdrop from "../components/Backdrop/Backdrop.js";
 import { connect } from "react-redux";
+import LandingPage from "../components/LandingPage";
 
+//HISTORY CREATED SO I CAN MAKE LANDING PAGE NOT HOLD HEADER
 
 class AppRouter extends Component {
 	state = {
@@ -27,12 +28,14 @@ class AppRouter extends Component {
 	render() {
 		let backdrop;
 		let header;
+
 		if (this.props.sideDrawerOpen) {
 			backdrop = <Backdrop />;
 		}
 		if (this.props.authToken && this.props.refreshToken) {
 			header = <Header />;
 		}
+
 		return (
 			<BrowserRouter>
 				<React.Fragment>
@@ -45,14 +48,14 @@ class AppRouter extends Component {
 						<Route path="/home" component={Home} exact={true} />
 						<Route path="/trade-hub" component={TradeHub} exact={true} />
 						<Route path="/want-list" component={WantList} exact={true} />
-						<Route path="/contact" component={Contact} exact={true} />
+
 						{/* <Route component={NotFound} /> */}
 						<Route
 							path="/RedditTokenRedirect"
 							component={RedditTokenRedirectPage}
 							exact={true}
 						/>
-						<Route path="/" component={Login} />
+						<Route path="/" exact={true} component={LandingPage} />
 					</Switch>
 				</React.Fragment>
 			</BrowserRouter>

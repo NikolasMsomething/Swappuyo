@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "./styles/DrawerToggleButton.css";
+import React from "react";
+import "../styles/DrawerToggleButton.css";
 import { connect } from "react-redux";
-import { toggleSideDrawer } from "../actions";
+import { toggleSideDrawer } from "../../actions";
 
 const DrawerToggleButton = props => (
 	<button

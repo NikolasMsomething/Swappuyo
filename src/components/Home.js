@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Header from "../components/Header";
 import { getFromRedditHardwareSwap } from "../actions";
-import SearchComponent from "./searchComponent";
-import TradeDetails from "./TradeDetails";
+import SearchComponent from "./HomeSubComponents/searchComponent";
+import TradeDetails from "./HomeSubComponents/TradeDetails";
 import { Redirect } from "react-router-dom";
-import { clientId, clientSecret, redirectURI } from "../config";
+import { clientId, redirectURI } from "../config";
 
 class Home extends Component {
 	//WARNING! To be deprecated in React v17. Use componentDidMount instead.
@@ -44,7 +43,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
 		items: state.itemsReducer.items,
 		authToken: state.loginReducer.authToken,
