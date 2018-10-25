@@ -195,12 +195,12 @@
 		color: var(--primary);
 	}
 
-	.DontHaveAccountLink {
+	.AlreadyHaveAccountLink {
 		text-decoration: none;
 		color: var(--primary);
 	}
 
-	.DontHaveAccountLink:hover {
+	.AlreadyHaveAccountLink:hover {
 		text-decoration: none;
 		color: var(--primary);
 	}
