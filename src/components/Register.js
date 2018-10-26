@@ -10,9 +10,9 @@ const Register = props => {
 		return <Redirect to="/home" />;
 	}
 
-	if (props.didRegister) {
-		return <Redirect to="/login" />;
-	}
+	// if (props.didRegister) {
+	// 	return <Redirect to="/login" />;
+	// }
 
 	return (
 		<React.Fragment>

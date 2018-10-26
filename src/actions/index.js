@@ -45,7 +45,7 @@ export const postToSwapuyoRegisterAction = (
 		})
 
 		.then(() => {
-			return dispatch(postToSwapuyoRegisterSuccess());
+			return dispatch(postToSwapuyoLoginAction(username, password));
 		})
 		.catch(error => {
 			let err = error.message || error.error.details[0].message;
