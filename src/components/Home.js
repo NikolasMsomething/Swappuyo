@@ -6,6 +6,7 @@ import TradeDetails from "./HomeSubComponents/TradeDetails";
 import { Redirect } from "react-router-dom";
 import { clientId, redirectURI } from "../config";
 import { Route } from "react-router-dom";
+import "./styles/Home.css";
 
 class Home extends Component {
 	//WARNING! To be deprecated in React v17. Use componentDidMount instead.
@@ -20,7 +21,7 @@ class Home extends Component {
 	render() {
 		if (this.props.refreshToken === undefined && this.props.authToken) {
 			return (
-				<div>
+				<div className="hide">
 					<Route
 						path="/"
 						component={() =>
