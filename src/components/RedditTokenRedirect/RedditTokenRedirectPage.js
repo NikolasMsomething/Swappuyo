@@ -5,12 +5,15 @@ import { giveCodeToSwappuyoApi } from "../../actions";
 import { Redirect } from "react-router-dom";
 import { clearAuth } from "../../actions";
 import { clearAuthToken, clearRefreshToken } from "../../local-storage";
+import { FaValueAbsolute } from "react-icons/fa";
 
 class RedditTokenRedirectPage extends Component {
 	componentDidMount() {
 		const values = queryString.parse(this.props.location.search);
-
-		return this.props.dispatch(giveCodeToSwappuyoApi(values.code));
+		console.log(values.code);
+		if (!values.error) {
+			return this.props.dispatch(giveCodeToSwappuyoApi(values.code));
+		}
 	}
 
 	render() {
@@ -19,14 +22,10 @@ class RedditTokenRedirectPage extends Component {
 			return <Redirect to={"/home"} />;
 		}
 		if (values.error) {
-			this.props.dispatch(clearAuth());
-			clearAuthToken();
-			clearRefreshToken();
-
 			const clear = async () => {
 				await this.props.dispatch(clearAuth());
-				clearAuthToken();
-				clearRefreshToken();
+				await clearAuthToken();
+				await clearRefreshToken();
 			};
 			clear();
 		}

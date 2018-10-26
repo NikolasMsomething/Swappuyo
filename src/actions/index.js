@@ -261,7 +261,9 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 		})
 		.then(data => {
 			dispatch(storeRedditTokens(data));
-			saveRefreshToken(data.refresh_token);
+			if (data.refresh_token !== undefined) {
+				saveRefreshToken(data.refresh_token);
+			}
 		})
 		.catch(err => {
 			alert(err);
