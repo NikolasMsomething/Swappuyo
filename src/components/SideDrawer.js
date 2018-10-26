@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/SideDrawer.css";
 import { connect } from "react-redux";
-import { clearAuthToken } from "../local-storage";
+import { clearAuthToken, clearRefreshToken } from "../local-storage";
 
 const SideDrawer = props => {
 	let drawerClasses = ["side-drawer"];
@@ -46,6 +46,7 @@ const SideDrawer = props => {
 					<a
 						onClick={e => {
 							clearAuthToken();
+							clearRefreshToken();
 						}}
 						className="contact-link"
 						href="/login"
