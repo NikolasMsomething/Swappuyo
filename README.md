@@ -15,7 +15,7 @@ The Solution:
 
 > Client clicks dispatch actions which effectively send the items author, title, and url to our Swappuyo Api! The Swappuyo Api vets them and saves them to Swappuyo's mongo database
 
-![example2](https://i.imgur.com/OCb8egF.png)
+![example2](https://i.imgur.com/yYcLco3.png)
 
 > Users can delete items with the simple click of a trashcan!
 
