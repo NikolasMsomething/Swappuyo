@@ -18,7 +18,6 @@ export const clearAuthToken = () => {
 
 export const clearRefreshToken = () => {
 	try {
-		console.log("clear refresh happened");
 		localStorage.removeItem("refreshToken");
 	} catch (e) {
 		console.log(e);
