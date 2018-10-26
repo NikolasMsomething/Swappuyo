@@ -2,8 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import "./styles/LandingPage.css";
 import { NavLink, Redirect } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
+
+const history = createHistory();
 
 const LandingPage = props => {
+	if (history.location.pathname === "/") {
+		console.log(
+			"The optimist fell ten stories. And at each window bar. He shouted to his friends, 'It's alright so far'. :)"
+		);
+	}
+
 	if (props.authToken) {
 		return <Redirect to="/home" />;
 	}
