@@ -15,7 +15,8 @@ if (authToken) {
 	storeAuthInfo(authToken, store.dispatch);
 }
 
-if (refreshToken) {
+//hacky way to prevent string undefined loading into refresh token
+if (refreshToken && refreshToken !== "undefined") {
 	store.dispatch(storeRefreshToken(refreshToken));
 }
 export default store;
