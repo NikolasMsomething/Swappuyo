@@ -40,7 +40,6 @@ class RedditTokenRedirectPage extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state.loginReducer);
 	return {
 		redditTokenType: state.loginReducer.redditTokenType,
 		accessToken: state.loginReducer.accessToken,
