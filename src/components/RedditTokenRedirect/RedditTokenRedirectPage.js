@@ -5,7 +5,6 @@ import { giveCodeToSwappuyoApi } from "../../actions";
 import { Redirect } from "react-router-dom";
 import { clearAuth } from "../../actions";
 import { clearAuthToken, clearRefreshToken } from "../../local-storage";
-import { FaValueAbsolute } from "react-icons/fa";
 
 class RedditTokenRedirectPage extends Component {
 	componentDidMount() {

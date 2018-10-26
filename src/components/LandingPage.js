@@ -9,7 +9,7 @@ const history = createHistory();
 const LandingPage = props => {
 	if (history.location.pathname === "/") {
 		console.log(
-			"The optimist fell ten stories. And at each window bar. He shouted to his friends, 'It's alright so far'. :)"
+			"When the setting sun is sinking and your mind from troubles free. When of missing friends you're thinking, Don't forget to think of me :)"
 		);
 	}
 
