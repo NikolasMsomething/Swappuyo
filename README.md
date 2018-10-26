@@ -3,6 +3,12 @@
 Welcome to Swappuyo!
 [Click here to see a live version!](https://swappuyo-client.herokuapp.com/)
 
+> Test Reddit and Test Swappuyo account
+> reddit username: swappuyotest
+> reddit password: password123
+> swappuyo username: swappuyotest
+> swappuyo password: password123
+
 The Problem:
 
 > Swappuyo was designed to scratch an itch I've had for a while. As a hobby, I'm keen to trading various items over the internet through a site known as Reddit. Because Reddit is a swapper's effective middleman, the trade process does entail us using it with the lot of its features. The problem with that is the site is a social media platform at its core. Even as great as it is, it wasn't designed for the multiple trading forums it hosts.

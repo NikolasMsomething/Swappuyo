@@ -10,7 +10,6 @@ import { FaValueAbsolute } from "react-icons/fa";
 class RedditTokenRedirectPage extends Component {
 	componentDidMount() {
 		const values = queryString.parse(this.props.location.search);
-		console.log(values.code);
 		if (!values.error) {
 			return this.props.dispatch(giveCodeToSwappuyoApi(values.code));
 		}
