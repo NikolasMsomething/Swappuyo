@@ -113,12 +113,6 @@ export const postToSwapuyoLoginAction = (username, password) => dispatch => {
 		})
 		.catch(error => {
 			let err = error.message || error.error.details[0].message;
-			// if (error.message) {
-			// 	console.error(error.message);
-			// }
-			// if (error.error) {
-			// 	alert(error.error);
-			// }
 			alert(err);
 		});
 };
@@ -187,7 +181,7 @@ export const getFromSubRedditMarkdown = (
 		.then(results => {
 			let fortyResults;
 
-			if (subreddit === "new" || subreddit === "rising") {
+			if (redditFilter === "new" || redditFilter === "rising") {
 				fortyResults = results;
 				let arr = [];
 				fortyResults.forEach((item, index) => {
@@ -202,21 +196,39 @@ export const getFromSubRedditMarkdown = (
 				});
 				dispatch(RedditItemToStore(arr));
 			}
-			fortyResults = results;
-			let arr = [];
-			fortyResults.forEach((item, index) => {
-				if (index !== 1 && index !== 0) {
-					arr.push({
-						itemId: item.id,
-						itemUrl: item.url,
-						itemTitle: item.title,
-						itemAuthor: item.author,
-						content: item.selftext_html,
-						expanded: false
-					});
-				}
-			});
-			dispatch(RedditItemToStore(arr));
+			if (subreddit === "gameswap") {
+				fortyResults = results;
+				let arr = [];
+				fortyResults.forEach((item, index) => {
+					if (index !== 0) {
+						arr.push({
+							itemId: item.id,
+							itemUrl: item.url,
+							itemTitle: item.title,
+							itemAuthor: item.author,
+							content: item.selftext_html,
+							expanded: false
+						});
+					}
+				});
+				dispatch(RedditItemToStore(arr));
+			} else {
+				fortyResults = results;
+				let arr = [];
+				fortyResults.forEach((item, index) => {
+					if (index !== 1 && index !== 0) {
+						arr.push({
+							itemId: item.id,
+							itemUrl: item.url,
+							itemTitle: item.title,
+							itemAuthor: item.author,
+							content: item.selftext_html,
+							expanded: false
+						});
+					}
+				});
+				dispatch(RedditItemToStore(arr));
+			}
 		})
 		.catch(err => {
 			alert(err);
