@@ -12,15 +12,15 @@ Test Reddit and Test Swappuyo account:
 
 The Problem:
 
-> Swappuyo was designed to scratch an itch I've had for a while. As a hobby, I'm keen to trading various items over the internet through a site known as Reddit. Because Reddit is a swapper's effective middleman, the trade process does entail us using it with the lot of its features. The problem with that is the site is a social media platform at its core. Even as great as it is, it wasn't designed for the multiple trading forums it hosts.
+> Swappuyo was designed to scratch a personal itch. Trading various items through Reddit has been a hobby of mine for a while. Because Reddit is a swapper's effective middleman, the trade process entails using the website and many of its features. The problem with this is that the site is a social media platform at its core. As great as Reddit is, it wasn't designed for the multiple trading forums it hosts.
 
 The Solution:
 
-> My web app gathers these trade forums and allows users to sift through them without ever having to leave a single page. The trade items contents are and will always be dynamically generated. These are received through subsequent calls to the Official Swappuyo Api which in turn makes calls to the Reddit Api. Users are now well able to save and view trades with ease!
+> Swappuyo gathers entries from these trade forums and allows users to sift through them on a single page. The contents are and will always be dynamically generated. Articles are received through continual calls to the Official Swappuyo API which in turn makes calls to the Reddit API. Users are now able to save and view trades with ease!
 
 ![example](https://i.imgur.com/IRsGVjM.png)
 
-> Client clicks dispatch actions which effectively send the items author, title, and url to our Swappuyo Api! The Swappuyo Api vets them and saves them to Swappuyo's mongo database
+> Client's clicks on the save button dispatches actions which effectively send the items author, title, and url to our Swappuyo Api! The Swappuyo Api vets them and saves them to Swappuyo's mongo database.
 
 ![example2](https://i.imgur.com/yYcLco3.png)
 
@@ -28,7 +28,7 @@ The Solution:
 
 ![example3](https://i.imgur.com/HJvOK5k.png)
 
-> The great thing about Swappuyo is that it's extremely scaleable. As the app matures you're going to see more features added relatively easily(thanks to the architecture). Features include (but are not limited to) user messaging and post comment viewing. Users will eventually also be able to save items they own and search for items they yearn for.
+> The great thing about Swappuyo is that it's extremely scaleable. As the app matures you're going to see more features added relatively easily(thanks to the architecture). New features include (but are not limited to) user messaging and post comment viewing. Users will eventually also be able to save items they own and search for items they yearn for.
 
 ### Tech
 
