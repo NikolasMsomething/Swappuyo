@@ -5,11 +5,10 @@ Welcome to Swappuyo!
 
 Test Reddit and Test Swappuyo account:
 
-reddit username: swappuyotest
-reddit password: password123
-
-swappuyo username: swappuyotest
-swappuyo password: password123
+|          |   Username   |    Password |
+| -------- | :----------: | ----------: |
+| Swappuyo | swappuyotest | password123 |
+| Reddit   | swappuyotest | password123 |
 
 The Problem:
 
