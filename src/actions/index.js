@@ -2,6 +2,7 @@ import { normalizeResponseErrors } from "./utils";
 import { saveAuthToken, saveRefreshToken } from "../local-storage";
 import jwtDecode from "jwt-decode";
 import { API_BASE_URL } from "../config";
+import swal from "sweetalert";
 
 // REGISTER ACTIONS PAGE
 export const postToSwapuyoRegisterSuccess = value => {
@@ -50,7 +51,7 @@ export const postToSwapuyoRegisterAction = (
 		.catch(error => {
 			let err = error.message || error.error.details[0].message;
 
-			alert(err);
+			swal(err);
 		});
 };
 
@@ -113,7 +114,7 @@ export const postToSwapuyoLoginAction = (username, password) => dispatch => {
 		})
 		.catch(error => {
 			let err = error.message || error.error.details[0].message;
-			alert(err);
+			swal(err);
 		});
 };
 
@@ -164,7 +165,7 @@ export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 			dispatch(RedditItemToStore(arr));
 		})
 		.catch(err => {
-			alert(err);
+			swal(err);
 		});
 };
 
@@ -231,7 +232,7 @@ export const getFromSubRedditMarkdown = (
 			}
 		})
 		.catch(err => {
-			alert(err);
+			swal(err);
 		});
 };
 
@@ -266,7 +267,7 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 			}
 		})
 		.catch(err => {
-			alert(err);
+			swal(err);
 		});
 };
 export const STORE_REFRESH_TOKEN = "STORE_REFRESH_TOKEN";
@@ -308,14 +309,14 @@ export const deleteWantTradeFromSwappuyoApi = (
 				Authorization: "Bearer " + authToken
 			}
 		});
-		alert("Item Deleted!");
+		swal("Item Deleted!");
 		try {
 			await dispatch(getWantTradeFromSwappuyoApi(authToken));
 		} catch (err) {
-			alert(err);
+			swal(err);
 		}
 	} catch (error) {
-		alert(error);
+		swal(error);
 	}
 }; //testing async await here!
 
@@ -342,10 +343,10 @@ export const postWantTradeToSwappuyoApi = (
 			return res.json();
 		})
 		.then(data => {
-			alert("Item Saved!");
+			swal("Item Saved!");
 		})
 		.catch(err => {
-			alert(err);
+			swal(err);
 		});
 };
 export const GET_TRADE_SUCCESS = "GET_TRADE_SUCCESS";
@@ -372,7 +373,7 @@ export const getWantTradeFromSwappuyoApi = authToken => dispatch => {
 			dispatch(getWantTradeFromSwappuyoApiSuccess(data));
 		})
 		.catch(err => {
-			alert(err);
+			swal(err);
 		});
 };
 
