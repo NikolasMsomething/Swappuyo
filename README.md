@@ -3,11 +3,13 @@
 Welcome to Swappuyo!
 [Click here to see a live version!](https://swappuyo-client.herokuapp.com/)
 
-> Test Reddit and Test Swappuyo account
-> reddit username: swappuyotest
-> reddit password: password123
-> swappuyo username: swappuyotest
-> swappuyo password: password123
+Test Reddit and Test Swappuyo account:
+
+reddit username: swappuyotest
+reddit password: password123
+
+swappuyo username: swappuyotest
+swappuyo password: password123
 
 The Problem:
 
