@@ -5,10 +5,12 @@ import {
 	CLEAR_AUTH,
 	STORE_REDDIT_TOKENS,
 	STORE_REFRESH_TOKEN,
-	LANDING_TOGGLE
+	LANDING_TOGGLE,
+	STORE_OLD_TIME
 } from "../actions";
 
 const initialState = {
+	accessExpireTime: undefined,
 	authToken: undefined,
 	user: undefined,
 	loading: false,
@@ -65,6 +67,11 @@ export const loginReducer = (state = initialState, action) => {
 		case LANDING_TOGGLE: {
 			return Object.assign({}, state, {
 				landingToggle: action.value
+			});
+		}
+		case STORE_OLD_TIME: {
+			return Object.assign({}, state, {
+				accessExpireTime: action.value
 			});
 		}
 

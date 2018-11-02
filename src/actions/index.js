@@ -1,5 +1,9 @@
 import { normalizeResponseErrors } from "./utils";
-import { saveAuthToken, saveRefreshToken } from "../local-storage";
+import {
+	saveAuthToken,
+	saveRefreshToken,
+	storeExpireTimeToNow
+} from "../local-storage";
 import jwtDecode from "jwt-decode";
 import { API_BASE_URL } from "../config";
 import swal from "sweetalert";
@@ -246,6 +250,14 @@ export const storeRedditTokens = value => {
 	};
 };
 
+export const STORE_OLD_TIME = "STORE_OLD_TIME";
+export const storeOldTime = value => {
+	return {
+		type: STORE_OLD_TIME,
+		value
+	};
+};
+
 export const giveCodeToSwappuyoApi = code => dispatch => {
 	return fetch(`${API_BASE_URL}/api/code`, {
 		method: "POST",
@@ -261,6 +273,12 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 			return res.json();
 		})
 		.then(data => {
+			console.log(data);
+			if (data.expires_in) {
+				let timeRightNow = Date.now();
+				console.log(timeRightNow);
+				storeExpireTimeToNow(timeRightNow);
+			}
 			dispatch(storeRedditTokens(data));
 			if (data.refresh_token !== undefined) {
 				saveRefreshToken(data.refresh_token);

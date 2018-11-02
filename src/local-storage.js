@@ -35,3 +35,20 @@ export const saveRefreshToken = refreshToken => {
 		console.log(e);
 	}
 };
+
+export const storeExpireTimeToNow = time => {
+	try {
+		localStorage.setItem("accessExpireTime", time);
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+export const loadExpiringTime = () => {
+	try {
+		console.log("happened");
+		return localStorage.getItem("accessExpireTime");
+	} catch (e) {
+		console.log(e);
+	}
+};
