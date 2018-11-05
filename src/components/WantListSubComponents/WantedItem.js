@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "../styles/WantList.css";
 import { IoIosTrash } from "react-icons/io";
-import { deleteWantTradeFromSwappuyoApi } from "../../actions/index";
+import { deleteWantTradeFromSwappuyoApi } from "../../actions";
 
 function WantedItem(props) {
 	if (!props.authToken) {

@@ -2,7 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import DrawerToggleButton from "./HeaderSubComponents/DrawerToggleButton";
 import "./styles/navbar.css";
-import { clearAuthToken, clearRefreshToken } from "../local-storage";
+import {
+	clearAuthToken,
+	clearAccessToken,
+	clearTimeToken
+} from "../local-storage";
 
 const Header = () => {
 	return (
@@ -55,7 +59,8 @@ const Header = () => {
 							className="contact-link"
 							onClick={e => {
 								clearAuthToken();
-								clearRefreshToken();
+								clearAccessToken();
+								clearTimeToken();
 							}}
 							href="/login"
 							activeclassname="is-active"

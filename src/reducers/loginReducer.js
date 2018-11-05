@@ -4,7 +4,7 @@ import {
 	AUTH_ERROR,
 	CLEAR_AUTH,
 	STORE_REDDIT_TOKENS,
-	STORE_REFRESH_TOKEN,
+	STORE_ACCESS_TOKEN,
 	LANDING_TOGGLE,
 	STORE_OLD_TIME
 } from "../actions";
@@ -15,9 +15,8 @@ const initialState = {
 	user: undefined,
 	loading: false,
 	error: null,
-	redditTokenType: undefined,
 	accessToken: undefined,
-	refreshToken: undefined,
+	expiresIn: undefined,
 	landingToggle: false
 };
 
@@ -56,12 +55,12 @@ export const loginReducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				redditTokenType: action.value.token_type,
 				accessToken: action.value.access_token,
-				refreshToken: action.value.refresh_token
+				expiresIn: action.value.expires_in
 			});
 		}
-		case STORE_REFRESH_TOKEN: {
+		case STORE_ACCESS_TOKEN: {
 			return Object.assign({}, state, {
-				refreshToken: action.value
+				accessToken: action.value
 			});
 		}
 		case LANDING_TOGGLE: {

@@ -14,11 +14,7 @@ function SearchComponent(props) {
 					let subreddit = e.currentTarget.tradeReddits.value;
 					let redditFilter = e.currentTarget.redditSort.value;
 					props.dispatch(
-						getFromSubRedditMarkdown(
-							props.refreshToken,
-							subreddit,
-							redditFilter
-						)
+						getFromSubRedditMarkdown(props.accessToken, subreddit, redditFilter)
 					);
 				}}
 			>
@@ -59,7 +55,7 @@ function SearchComponent(props) {
 function mapStateToProps(state) {
 	return {
 		items: state.itemsReducer.items,
-		refreshToken: state.loginReducer.refreshToken
+		accessToken: state.loginReducer.accessToken
 	};
 }
 export default connect(mapStateToProps)(SearchComponent);

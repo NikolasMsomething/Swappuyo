@@ -1,32 +1,54 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getFromRedditHardwareSwap, storeOldTime } from "../actions";
+import {
+	getFromRedditHardwareSwap,
+	giveRefreshTokenToSwappuyoApi
+} from "../actions";
 import SearchComponent from "./HomeSubComponents/searchComponent";
 import TradeDetails from "./HomeSubComponents/TradeDetails";
 import { Redirect } from "react-router-dom";
 import { clientId, redirectURI } from "../config";
 import { Route } from "react-router-dom";
 import "./styles/Home.css";
-import { loadExpiringTime } from "../local-storage";
 
 class Home extends Component {
 	//WARNING! To be deprecated in React v17. Use componentDidMount instead.
 
 	componentDidMount() {
 		if (this.props.accessExpireTime) {
-			this.props.dispatch(storeOldTime(this.props.accessExpireTime));
+			let currentTime = Date.now();
+			let oldTime = Number(this.props.accessExpireTime);
+			console.log(currentTime - oldTime);
+			let timeCheck = currentTime - oldTime;
+			if (timeCheck >= 2700000) {
+				this.props.dispatch(
+					giveRefreshTokenToSwappuyoApi(this.props.authToken)
+				);
+			}
 		}
 
-		if (this.props.refreshToken) {
-			let refreshToken = this.props.refreshToken;
-			this.props.dispatch(getFromRedditHardwareSwap(refreshToken));
+		if (this.props.accessToken) {
+			let accessToken = this.props.accessToken;
+			this.props.dispatch(getFromRedditHardwareSwap(accessToken));
 		}
+	}
 
-		console.log(Date.now());
+	componentDidUpdate() {
+		if (this.props.accessExpireTime) {
+			let currentTime = Date.now();
+			let oldTime = Number(this.props.accessExpireTime);
+			console.log(currentTime - oldTime);
+			let timeCheck = currentTime - oldTime;
+			if (timeCheck >= 2700000) {
+				this.props.dispatch(
+					giveRefreshTokenToSwappuyoApi(this.props.authToken)
+				);
+			}
+		}
 	}
 
 	render() {
-		if (this.props.refreshToken === undefined && this.props.authToken) {
+		if (this.props.accessToken === undefined && this.props.authToken) {
 			return (
 				<div className="hide">
 					<Route
@@ -53,11 +75,10 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state);
 	return {
 		items: state.itemsReducer.items,
 		authToken: state.loginReducer.authToken,
-		refreshToken: state.loginReducer.refreshToken,
+		accessToken: state.loginReducer.accessToken,
 		accessExpireTime: state.loginReducer.accessExpireTime
 	};
 }

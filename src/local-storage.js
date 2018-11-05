@@ -4,7 +4,7 @@ export const loadAuthToken = () => {
 
 export const saveAuthToken = authToken => {
 	try {
-		localStorage.setItem("authToken", authToken);
+		return localStorage.setItem("authToken", authToken);
 	} catch (e) {
 		console.log(e);
 	}
@@ -12,25 +12,25 @@ export const saveAuthToken = authToken => {
 
 export const clearAuthToken = () => {
 	try {
-		localStorage.removeItem("authToken");
+		return localStorage.removeItem("authToken");
 	} catch (e) {}
 };
 
-export const clearRefreshToken = () => {
+export const clearAccessToken = () => {
 	try {
-		localStorage.removeItem("refreshToken");
+		return localStorage.removeItem("accessToken");
 	} catch (e) {
 		console.log(e);
 	}
 };
 
-export const loadRefreshToken = () => {
-	return localStorage.getItem("refreshToken");
+export const loadAccessToken = () => {
+	return localStorage.getItem("accessToken");
 };
 
-export const saveRefreshToken = refreshToken => {
+export const saveAccessToken = accessToken => {
 	try {
-		localStorage.setItem("refreshToken", refreshToken);
+		return localStorage.setItem("accessToken", accessToken);
 	} catch (e) {
 		console.log(e);
 	}
@@ -38,7 +38,7 @@ export const saveRefreshToken = refreshToken => {
 
 export const storeExpireTimeToNow = time => {
 	try {
-		localStorage.setItem("accessExpireTime", time);
+		return localStorage.setItem("accessExpireTime", time);
 	} catch (e) {
 		console.log(e);
 	}
@@ -46,8 +46,15 @@ export const storeExpireTimeToNow = time => {
 
 export const loadExpiringTime = () => {
 	try {
-		console.log("happened");
 		return localStorage.getItem("accessExpireTime");
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+export const clearTimeToken = () => {
+	try {
+		return localStorage.removeItem("accessExpireTime");
 	} catch (e) {
 		console.log(e);
 	}

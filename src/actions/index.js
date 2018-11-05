@@ -1,7 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
 import {
 	saveAuthToken,
-	saveRefreshToken,
+	saveAccessToken,
 	storeExpireTimeToNow
 } from "../local-storage";
 import jwtDecode from "jwt-decode";
@@ -147,8 +147,14 @@ export const RedditItemToStore = value => {
 };
 
 //CALL TO OUR API WHICH CALLS TO REDDIT API USING OUR REFRESH TOKEN!! CRUCIAL STRUCTURE
-export const getFromRedditHardwareSwap = refreshToken => dispatch => {
-	return fetch(`${API_BASE_URL}/api/hardwareswap?refreshToken=${refreshToken}`)
+export const getFromRedditHardwareSwap = accessToken => dispatch => {
+	let newAccessToken;
+
+	if (accessToken) {
+		newAccessToken = accessToken.replace("+", "%2B");
+	}
+
+	return fetch(`${API_BASE_URL}/api/hardwareswap?accessToken=${newAccessToken}`)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
 		.then(results => {
@@ -174,12 +180,18 @@ export const getFromRedditHardwareSwap = refreshToken => dispatch => {
 };
 
 export const getFromSubRedditMarkdown = (
-	refreshToken,
+	accessToken,
 	subreddit,
 	redditFilter
 ) => dispatch => {
+	let newAccessToken;
+
+	if (accessToken) {
+		newAccessToken = accessToken.replace("+", "%2B");
+	}
+
 	return fetch(
-		`${API_BASE_URL}/api/${subreddit}?refreshToken=${refreshToken}&redditFilter=${redditFilter}`
+		`${API_BASE_URL}/api/${subreddit}?accessToken=${newAccessToken}&redditFilter=${redditFilter}`
 	)
 		.then(res => normalizeResponseErrors(res))
 		.then(results => results.json())
@@ -258,12 +270,13 @@ export const storeOldTime = value => {
 	};
 };
 
-export const giveCodeToSwappuyoApi = code => dispatch => {
+export const giveCodeToSwappuyoApi = (code, authToken) => dispatch => {
 	return fetch(`${API_BASE_URL}/api/code`, {
 		method: "POST",
 		mode: "cors",
 		headers: {
-			"Content-Type": "application/json"
+			"Content-Type": "application/json",
+			Authorization: "Bearer " + authToken
 		},
 		body: JSON.stringify({
 			code
@@ -277,21 +290,53 @@ export const giveCodeToSwappuyoApi = code => dispatch => {
 			if (data.expires_in) {
 				let timeRightNow = Date.now();
 				console.log(timeRightNow);
-				storeExpireTimeToNow(timeRightNow);
+				storeExpireTimeToNow(timeRightNow); //local
+				dispatch(storeOldTime(timeRightNow)); //redux
 			}
 			dispatch(storeRedditTokens(data));
-			if (data.refresh_token !== undefined) {
-				saveRefreshToken(data.refresh_token);
+			console.log(data, "DATE AFTER CODE");
+			if (data.access_token !== undefined) {
+				saveAccessToken(data.access_token);
 			}
 		})
 		.catch(err => {
 			swal(err);
 		});
 };
-export const STORE_REFRESH_TOKEN = "STORE_REFRESH_TOKEN";
-export const storeRefreshToken = value => {
+
+export const giveRefreshTokenToSwappuyoApi = authToken => dispatch => {
+	return fetch(`${API_BASE_URL}/api/redditrefresh`, {
+		method: "POST",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: "Bearer " + authToken
+		}
+	})
+		.then(res => {
+			return res.json();
+		})
+		.then(data => {
+			console.log(data);
+			if (data.expires_in) {
+				let timeRightNow = Date.now();
+				console.log(timeRightNow);
+				storeExpireTimeToNow(timeRightNow); //local
+				dispatch(storeOldTime(timeRightNow)); //redux
+			}
+			if (data.access_token && data.access_token !== "undefined") {
+				dispatch(storeRedditTokens(data));
+			}
+		})
+		.catch(err => {
+			swal(err);
+		});
+};
+
+export const STORE_ACCESS_TOKEN = "STORE_ACCESS_TOKEN";
+export const storeAccessToken = value => {
 	return {
-		type: STORE_REFRESH_TOKEN,
+		type: STORE_ACCESS_TOKEN,
 		value
 	};
 };

@@ -2,7 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/SideDrawer.css";
 import { connect } from "react-redux";
-import { clearAuthToken, clearRefreshToken } from "../local-storage";
+import {
+	clearAuthToken,
+	clearAccessToken,
+	clearTimeToken
+} from "../local-storage";
 
 const SideDrawer = props => {
 	let drawerClasses = ["side-drawer"];
@@ -46,7 +50,8 @@ const SideDrawer = props => {
 					<a
 						onClick={e => {
 							clearAuthToken();
-							clearRefreshToken();
+							clearAccessToken();
+							clearTimeToken();
 						}}
 						className="contact-link"
 						href="/login"
@@ -63,8 +68,7 @@ const SideDrawer = props => {
 function mapStateToProps(state) {
 	return {
 		sideDrawerOpen: state.sideDrawerReducer.sideDrawerOpen,
-		authToken: state.loginReducer.authToken,
-		refreshToken: state.loginReducer.refreshToken
+		authToken: state.loginReducer.authToken
 	};
 }
 

@@ -32,7 +32,7 @@ class AppRouter extends Component {
 		if (this.props.sideDrawerOpen) {
 			backdrop = <Backdrop />;
 		}
-		if (this.props.authToken && this.props.refreshToken) {
+		if (this.props.authToken && this.props.accessToken) {
 			header = <Header />;
 		}
 
@@ -67,7 +67,7 @@ function mapStateToProps(state) {
 	return {
 		sideDrawerOpen: state.sideDrawerReducer.sideDrawerOpen,
 		authToken: state.loginReducer.authToken,
-		refreshToken: state.loginReducer.refreshToken
+		accessToken: state.loginReducer.accessToken
 	};
 }
 
