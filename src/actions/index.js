@@ -2,7 +2,9 @@ import { normalizeResponseErrors } from "./utils";
 import {
 	saveAuthToken,
 	saveAccessToken,
-	storeExpireTimeToNow
+	storeExpireTimeToNow,
+	clearAccessToken,
+	clearTimeToken
 } from "../local-storage";
 import jwtDecode from "jwt-decode";
 import { API_BASE_URL } from "../config";
@@ -151,7 +153,19 @@ export const getFromRedditHardwareSwap = accessToken => dispatch => {
 	let newAccessToken;
 
 	if (accessToken) {
-		newAccessToken = accessToken.replace("+", "%2B");
+		function replacePlus(str, funct) {
+			if (!str.length) {
+				return "";
+			}
+
+			if (funct(str[0])) {
+				return "%2B" + replacePlus(str.slice(1), funct);
+			}
+
+			return str[0] + replacePlus(str.slice(1), funct);
+		}
+
+		newAccessToken = replacePlus(accessToken, char => char === "+");
 	}
 
 	return fetch(`${API_BASE_URL}/api/hardwareswap?accessToken=${newAccessToken}`)
@@ -305,6 +319,8 @@ export const giveCodeToSwappuyoApi = (code, authToken) => dispatch => {
 };
 
 export const giveRefreshTokenToSwappuyoApi = authToken => dispatch => {
+	clearAccessToken();
+	clearTimeToken();
 	return fetch(`${API_BASE_URL}/api/redditrefresh`, {
 		method: "POST",
 		mode: "cors",
@@ -321,7 +337,8 @@ export const giveRefreshTokenToSwappuyoApi = authToken => dispatch => {
 			if (data.expires_in) {
 				let timeRightNow = Date.now();
 				console.log(timeRightNow);
-				storeExpireTimeToNow(timeRightNow); //local
+				storeExpireTimeToNow(timeRightNow);
+				saveAccessToken(data.access_token); //local
 				dispatch(storeOldTime(timeRightNow)); //redux
 			}
 			if (data.access_token && data.access_token !== "undefined") {

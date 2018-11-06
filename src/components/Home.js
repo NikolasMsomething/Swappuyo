@@ -20,7 +20,7 @@ class Home extends Component {
 			let oldTime = Number(this.props.accessExpireTime);
 			console.log(currentTime - oldTime);
 			let timeCheck = currentTime - oldTime;
-			if (timeCheck >= 2700000) {
+			if (Math.abs(timeCheck) >= 2700000) {
 				this.props.dispatch(
 					giveRefreshTokenToSwappuyoApi(this.props.authToken)
 				);
@@ -39,7 +39,7 @@ class Home extends Component {
 			let oldTime = Number(this.props.accessExpireTime);
 			console.log(currentTime - oldTime);
 			let timeCheck = currentTime - oldTime;
-			if (timeCheck >= 2700000) {
+			if (Math.abs(timeCheck) >= 2700000) {
 				this.props.dispatch(
 					giveRefreshTokenToSwappuyoApi(this.props.authToken)
 				);
