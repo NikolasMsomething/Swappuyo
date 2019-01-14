@@ -55,3 +55,7 @@ $ npm install
 - Searching - Adds searchable items
 - Personal Item Saving - Adds personable items to save
 - Reddit Item Searching - Adds specific searching for items
+
+### Link to the back-end
+
+https://github.com/NikolasMsomething/Swappuyo-Server/blob/master/README.md
