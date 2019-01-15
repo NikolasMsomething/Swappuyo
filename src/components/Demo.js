@@ -8,7 +8,7 @@ class Demo extends Component {
 
   componentDidMount() {
     console.log('hello');
-    this.props.dispatch(postToSwapuyoLoginAction('niktest', 'password123'));
+    this.props.dispatch(postToSwapuyoLoginAction('testaccount123', 'password123'));
   }
 
   render() {
