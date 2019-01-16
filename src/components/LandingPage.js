@@ -19,7 +19,7 @@ const LandingPage = props => {
 
 	return (
 		<React.Fragment>
-			<div className="landing-box-1">
+			<section className="landing-box-1">
 				<h1 className="landing-box-1-h1">Trading on Reddit taken seriously.</h1>
 				<p className="landing-infos">
 					Reddit can mean a lot of different things to a lot of different
@@ -36,8 +36,8 @@ const LandingPage = props => {
 						Click here to get started!
 					</NavLink>
 				</p>
-			</div>
-			<div className="landing-box-2">
+			</section>
+			<section className="landing-box-2">
 				<h2 className="landing-box-2-h2">
 					All your trading sub-reddits in one place
 				</h2>
@@ -50,7 +50,7 @@ const LandingPage = props => {
 					visit the whole Reddit website, when all we know we want to do is
 					trade.
 				</p>
-			</div>
+			</section>
 		</React.Fragment>
 	);
 };
